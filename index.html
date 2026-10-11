@@ -46,7 +46,15 @@ header.top{padding-bottom:6px}
 @media (max-width:560px){.tabs{gap:0 20px}.tabs [role=tab]{font-size:14px}}
 [role=tabpanel]:focus{outline:none}
 [role=tabpanel] > section.sec:first-child{margin-top:44px}
-.mini{margin-top:24px}
+.mini{margin-top:24px;position:relative}
+.mini .hit{fill:transparent;cursor:pointer;outline:none}
+.mini .hit:focus-visible{stroke:var(--ink);stroke-width:1.5}
+.mini .tip{position:absolute;top:0;left:0;z-index:5;display:none;background:#fff;color:var(--ink);border:1px solid var(--ink);padding:8px 10px;font-size:12.5px;line-height:1.5;width:236px;max-width:100%;pointer-events:none}
+.mini .tip.show{display:block}
+.mini .tip b{font-weight:600}
+.mini .tip .r{display:flex;justify-content:space-between;gap:12px}
+.mini .tip .r span:last-child{text-align:right;white-space:nowrap}
+.mini .tip .r.cash{font-weight:600;border-top:1px solid var(--ink);margin-top:4px;padding-top:4px}
 .mini svg{display:block;width:100%;height:auto;overflow:visible}
 .mini svg text{font-family:var(--sans);font-size:11.5px;fill:var(--ink-2)}
 .mini .cap{font-size:12.5px;color:var(--ink-3);margin-top:6px}
@@ -131,7 +139,7 @@ tr.tot td{border-top:1px solid var(--ink);border-bottom:0;font-weight:600}
 td.strong,th.strong{font-weight:600}
 td.dim{color:var(--ink-3)}
 table.wide{min-width:880px}
-table.pt{min-width:760px}
+table.pt{min-width:860px}
 table.mid{min-width:560px}
 
 /* breakdown list */
@@ -244,7 +252,7 @@ footer{margin-top:64px;padding-top:14px;border-top:1px solid var(--ink);font-siz
     <table class="wide" id="tbl-gen"></table>
   </div>
   <div class="warns" id="gen-warns"></div>
-  <h3 class="sub-h">Генератор по місяцях, ₴</h3>
+  <h3 class="sub-h">Генератор і економія на світлі по місяцях, ₴</h3>
   <div class="tscroll" tabindex="0" aria-label="Генератор по місяцях">
     <table class="months" id="tbl-gen-months"></table>
   </div>
@@ -254,6 +262,8 @@ footer{margin-top:64px;padding-top:14px;border-top:1px solid var(--ink);font-siz
       <legend>Спільні припущення</legend>
       <div class="field"><label for="g-fuelPrice">Ціна бензину А-92</label><div class="inp"><input type="number" id="g-fuelPrice" min="0" step="0.01" inputmode="decimal"><span class="unit">₴/л</span></div>
         <div class="hint">Середня по Україні ₴86,01/л на 9 жовтня 2026 (Мінфін, А-95 Consulting Group). Багато генераторів на 6 кВт потребують А-95 (₴89,17/л).</div></div>
+      <div class="field"><label for="g-gridTariff">Тариф на електроенергію, бізнес</label><div class="inp"><input type="number" id="g-gridTariff" min="0" step="0.1" inputmode="decimal"><span class="unit">₴/кВт·год</span></div>
+        <div class="hint">Припущення ≈₴11,40 з ПДВ: ринок «на добу наперед», жовтень 2026 (₴5 926/МВт·год) + передача ₴928 + розподіл Черкасиобленерго, 2 клас, ₴2 422 + постачальник ≈₴223, × 1,2.</div></div>
       <div class="field"><label for="g-genMaint">Олива й обслуговування</label><div class="inp"><input type="number" id="g-genMaint" min="0" step="0.5" inputmode="decimal"><span class="unit">₴/мотогод</span></div>
         <div class="hint">0,6 л оливи 10W-30 (₴200–310) кожні 50 мотогодин ≈ ₴5/год, якщо міняти самому. Сервіс (≈$80 за 75 год, Senci) ≈ ₴48/год.</div></div>
     </fieldset>
@@ -285,7 +295,7 @@ footer{margin-top:64px;padding-top:14px;border-top:1px solid var(--ink);font-siz
 <section class="sec" aria-labelledby="notes-h">
   <div class="sec-head"><h2 id="notes-h">Метод і джерела</h2></div>
   <div class="notes">
-    <p><strong>Гроші на руках</strong> за місяць = виторг − бариста − змінні витрати − постійні витрати − генератор. Без амортизації, кредитів і часу власника. За рік = середнє без пального за квітень – вересень × 12 − генератор за 12 місяців (за годинами кожного місяця). В середньому за місяць = за рік ÷ 12.</p>
+    <p><strong>Гроші на руках</strong> за місяць = виторг − бариста − змінні витрати − постійні витрати − генератор. Без амортизації, кредитів і часу власника. За рік = середнє без пального за квітень – вересень × 12 − (генератор − економія на світлі) за 12 місяців, за годинами кожного місяця. Економія = години × навантаження кВт × тариф, не більше за частку електроенергії в комунальних. В середньому за місяць = за рік ÷ 12.</p>
     <p><strong>Зміна середнього чека.</strong> Чек кожного місяця змінюється на той самий відсоток, кількість чеків — ні. Тож виторг і пов’язані з ним витрати, зокрема собівартість, змінюються так само. Беззбитковий чек — чек, за якого середні гроші на руках точки за квітень – вересень дорівнюють нулю.</p>
     <p><strong>Відключення.</strong> Типові години — 2025 рік, Черкаська обл., за графіками Черкасиобленерго, у межах 08:00–20:00 (години роботи — припущення). Грудень: 5,8 год на день (середнє по 12 підчергах, 16.12) × 31 ≈ 180 год. Листопад: 3,0 год (9.11) × 30 = 90 год. Жовтень: графіки 8–13.10 і з кінця місяця, тривалість невідома — оцінка 30 год. Січень – вересень: графіків не знайдено, 0. Вважаємо, що графіки діяли щодня.</p>
     <p><strong>Обладнання.</strong> Еспресо-машина на 2 групи — 4,5 кВт (зазвичай 3 – 5 кВт, ADS Coffee Supplies), нагрів працює ≈30% часу (20 – 35%, Pro Coffee Gear). Кавомолка — 0,35 кВт (Mazzer Super Jolly), ≈10% часу. Холодильник під стійкою — 0,2 кВт, 30% (ENERGY STAR: у середньому 35 – 40 Вт). Світло, каса й роутер — 100%. Генератор: 6 кВт, 2,5 л/год на повному навантаженні (MB7000E-A), 1,6 л/год при 50% (60 – 70% від повної витрати, Rental Power).</p>
@@ -726,7 +736,7 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
 
   // ---- defaults
   var TAX_KEYS = ["tax","levy","g1Tax","g1Levy","g2Tax","g2Levy","esv"];
-  var GLOBAL_DEFAULTS = {fopGroup:3, checkPct:0, fuelPrice:86.01, genMaint:5};
+  var GLOBAL_DEFAULTS = {fopGroup:3, checkPct:0, fuelPrice:86.01, genMaint:5, gridTariff:11.40};
   // blackout hours inside opening hours (08:00–20:00) per calendar month, Cherkasy oblast 2025 (see «Метод і джерела»)
   var HOURS_2025 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 90, 180];
   TAX_KEYS.forEach(function(k){ GLOBAL_DEFAULTS[k] = MODELS.geroev.DEFAULTS[k]; });
@@ -742,6 +752,7 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
   function pointDefaults(pid){
     var d = {};
     Object.keys(MODELS[pid].DEFAULTS).forEach(function(k){ if (TAX_KEYS.indexOf(k) < 0 && k !== "fopGroup" && k !== "checkPct") d[k] = MODELS[pid].DEFAULTS[k]; });
+    d.elec = 4000; // electricity part of utilities, ₴/month (= the utilities placeholder; see the field hint)
     d.gen = genDefaults();
     return d;
   }
@@ -804,6 +815,7 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
       {title:"Постійні на місяць", fields:[
         {id:"rent", label:"Оренда", unit:"₴/міс.", step:100, hint:ph + (tochka ? "Вкажіть фактичну." : "")},
         {id:"utilities", label:"Комунальні", unit:"₴/міс.", step:100, hint:ph + "Світло й вода."},
+        {id:"elec", label:"з них електроенергія", unit:"₴/міс.", step:100, hint:"Що не платимо мережі під час відключень. Типово ₴4 000 = усі комунальні: за навантаженням світло коштувало б ≈₴7 200/міс. (1,76 кВт × 12 год × 30 днів × ₴11,40)."},
         {id:"pos", label:"Каса / програма", unit:"₴/міс.", step:10, hint:"Зазвичай ₴150–2 160."},
         {id:"maint", label:"Сервіс обладнання", unit:"₴/міс.", step:100, hint:"Кавомолка, машина; зазвичай ₴1 000–3 000."}
       ]},
@@ -858,7 +870,7 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
     var sec = document.createElement("section"); sec.className = "sec"; sec.id = "pt-"+pid; sec.setAttribute("aria-labelledby", "h-"+pid);
     var html = '<div class="sec-head"><h2 id="h-'+pid+'">'+pt.name+'</h2><span class="muted" id="sub-'+pid+'"></span></div>';
     html += '<div class="figs three" id="figs-'+pid+'"></div><div class="figs rest" id="figs2-'+pid+'"></div><div class="warns" id="warn-'+pid+'"></div>';
-    html += '<div class="mini" id="mini-wrap-'+pid+'"><svg id="mini-'+pid+'" role="img"></svg><div class="cap">Гроші на руках за кожен місяць, з пальним.</div></div>';
+    html += '<div class="mini" id="mini-wrap-'+pid+'"><svg id="mini-'+pid+'" role="group"></svg><div class="tip" id="tip-'+pid+'" role="tooltip"></div><div class="cap">Гроші на руках за кожен місяць, з пальним.</div></div>';
     html += '<h3 class="sub-h">Середній місяць: продажі квітня – вересня 2026, генератор — річний ÷ 12</h3><ul class="blist" id="bd-'+pid+'"></ul>';
     html += '<h3 class="sub-h">Квітень – вересень 2026 по місяцях</h3><div class="tscroll" tabindex="0" aria-label="'+pt.name+', по місяцях"><table class="pt" id="tbl-'+pid+'"></table></div>';
     html += '<details class="box" id="inputs-'+pid+'"><summary><span class="t">Вхідні дані: '+pt.name+'</span><span class="m"></span></summary><div class="form" id="form-'+pid+'"></div></details>';
@@ -1005,16 +1017,22 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
       var perHour = generatorModel(state.p[pid].gen, 1, state.g.fuelPrice, state.g.genMaint);
       var genYear = gm.reduce(function(a, x){ return a + x.total; }, 0);
       var p0 = pointParams(pid, 0), res0 = M.compute(p0, PERIOD);
-      // year spread evenly (genYear / 12 a month): its average equals per year ÷ 12, and break-even is "year = 0"
-      var pA = pointParams(pid, genYear / 12), resA = M.compute(pA, PERIOD);
-      // Apr – Sep rows, each with the generator cost of its own calendar month
-      var rows = M.MONTHS.filter(inWindow).map(function(m){ return M.calcMonth(m, Object.assign({}, p0, {genCost: gm[+m.month.slice(5) - 1].total})); });
+      // grid saving: power not bought from the grid during blackouts, capped at the electricity part of utilities
+      var elecCap = Math.max(0, Math.min(state.p[pid].elec, p0.utilities));
+      var sv = H.map(function(h){ return Math.min(h * perHour.eff * state.g.gridTariff, elecCap); });
+      var saveYear = sv.reduce(function(a, x){ return a + x; }, 0);
+      var net = gm.map(function(x, i){ return x.total - sv[i]; }), netYear = genYear - saveYear;
+      // year spread evenly (… / 12 a month): its average equals per year ÷ 12, and break-even is "year = 0"
+      var pA = Object.assign(pointParams(pid, genYear / 12), {utilities: p0.utilities - saveYear / 12}), resA = M.compute(pA, PERIOD);
+      // Apr – Sep rows, each with the generator cost and grid saving of its own calendar month
+      var rows = M.MONTHS.filter(inWindow).map(function(m){ var i = +m.month.slice(5) - 1;
+        var r = M.calcMonth(m, Object.assign({}, p0, {genCost: gm[i].total, utilities: p0.utilities - sv[i]})); r.saving = sv[i]; return r; });
       var rows0 = res0.rows.filter(inWindow);
       rows.forEach(function(r, i){ r.cash0 = rows0[i].cash; r.avgCheck = r.revenue / r.receipts; });
-      var avg0 = res0.avgMonthlyCash, year = avg0 * 12 - genYear;
-      out.points[pid] = {res:resA, res0:res0, rows:rows, gm:gm, perHour:perHour, gen:perHour, p:pA, sum:M.sumRows(rows), sumA:resA.period,
+      var avg0 = res0.avgMonthlyCash, year = avg0 * 12 - netYear;
+      out.points[pid] = {res:resA, res0:res0, rows:rows, gm:gm, sv:sv, net:net, saveYear:saveYear, netYear:netYear, elecCap:elecCap, perHour:perHour, gen:perHour, p:pA, sum:M.sumRows(rows), sumA:resA.period,
         genYear:genYear, litresYear:gm.reduce(function(a, x){ return a + x.litres; }, 0), kwhYear:gm.reduce(function(a, x){ return a + x.kwh; }, 0),
-        avg0:avg0, year0:avg0 * 12, year:year, avg:year / 12, worstIdx:worstIdx, worst:avg0 - gm[worstIdx].total};
+        avg0:avg0, year0:avg0 * 12, year:year, avg:year / 12, worstIdx:worstIdx, worst:avg0 - net[worstIdx]};
       if (!out.months) out.months = rows.map(function(r){ return r.month; });
     });
     // owner's total revenue per month: used only for the ФОП income-limit warning, never displayed as a total
@@ -1055,9 +1073,9 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
         '<div class="v2'+negc(P.worst)+'" data-v="'+P.worst+'">'+fmt(P.worst)+'</div><div class="n">найважчий місяць — '+worstName+'</div>'+
         '<div class="n" style="margin-top:8px">без пального: '+fmt(P.avg0)+' на місяць</div></div>';
     }).join("");
-    var h = '<thead><tr><th>Точка</th><th>Виторг / міс.</th><th>Без пального / міс.</th><th>Генератор за рік</th><th class="strong">За рік</th><th>В середньому / міс.</th><th>Найважчий місяць</th></tr></thead><tbody>';
+    var h = '<thead><tr><th>Точка</th><th>Виторг / міс.</th><th>Без пального / міс.</th><th>Генератор − економія, рік</th><th class="strong">За рік</th><th>В середньому / міс.</th><th>Найважчий місяць</th></tr></thead><tbody>';
     POINTS.forEach(function(pt){ var P = R.points[pt.id];
-      h += '<tr><td>'+pt.name+'</td><td>'+fmt(P.res0.period.revenue / P.res0.period.n)+'</td><td>'+fmt(P.avg0)+'</td><td data-v="'+P.genYear+'">'+fmt(P.genYear)+'</td><td class="strong'+negc(P.year)+'" data-v="'+P.year+'">'+fmt(P.year)+'</td><td class="'+negc(P.avg)+'" data-v="'+P.avg+'">'+fmt(P.avg)+'</td><td class="'+negc(P.worst)+'" data-v="'+P.worst+'">'+fmt(P.worst)+'</td></tr>';
+      h += '<tr><td>'+pt.name+'</td><td>'+fmt(P.res0.period.revenue / P.res0.period.n)+'</td><td>'+fmt(P.avg0)+'</td><td data-v="'+P.netYear+'">'+fmt(P.netYear)+'</td><td class="strong'+negc(P.year)+'" data-v="'+P.year+'">'+fmt(P.year)+'</td><td class="'+negc(P.avg)+'" data-v="'+P.avg+'">'+fmt(P.avg)+'</td><td class="'+negc(P.worst)+'" data-v="'+P.worst+'">'+fmt(P.worst)+'</td></tr>';
     });
     el("tbl-compare").innerHTML = h + '</tbody>';
 
@@ -1073,11 +1091,11 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
     var g = state.g;
     var H = g.hours, totH = H.reduce(function(a, b){ return a + b; }, 0);
     el("gen-sub").textContent = num(totH) + " год/рік, " + fmt(g.fuelPrice, 2) + "/л";
-    var h = '<thead><tr><th>Точка</th><th>Потужність</th><th>Навантаження</th><th>Пік</th><th>Витрата</th><th>₴ за годину</th><th>кВт·год / рік</th><th>Літрів / рік</th><th class="strong">Генератор за рік</th></tr></thead><tbody>';
+    var h = '<thead><tr><th>Точка</th><th>Потужність</th><th>Навантаження</th><th>Пік</th><th>Витрата</th><th>₴ за годину</th><th>кВт·год / рік</th><th>Літрів / рік</th><th>Генератор за рік</th><th>Економія на світлі</th><th class="strong">Різниця за рік</th></tr></thead><tbody>';
     var warns = [];
     POINTS.forEach(function(pt){
       var P = R.points[pt.id], G = P.perHour, s = state.p[pt.id].gen;
-      h += '<tr><td>'+pt.name+'</td><td>'+num(s.kw,1)+' кВт</td><td class="'+(G.overEff?'neg':'')+'">'+num(G.eff,2)+' кВт · '+(isFinite(G.ratio)?Math.round(G.ratio*100)+'%':'—')+'</td><td class="'+(G.overPeak?'neg':'')+'">'+num(G.peak,2)+' кВт</td><td>'+num(G.lph,2)+' л/год</td><td data-v="'+G.total+'">'+fmt(G.total,1)+'</td><td>'+num(P.kwhYear)+'</td><td data-v="'+P.litresYear+'">'+num(P.litresYear,1)+'</td><td class="strong" data-v="'+P.genYear+'">'+fmt(P.genYear)+'</td></tr>';
+      h += '<tr><td>'+pt.name+'</td><td>'+num(s.kw,1)+' кВт</td><td class="'+(G.overEff?'neg':'')+'">'+num(G.eff,2)+' кВт · '+(isFinite(G.ratio)?Math.round(G.ratio*100)+'%':'—')+'</td><td class="'+(G.overPeak?'neg':'')+'">'+num(G.peak,2)+' кВт</td><td>'+num(G.lph,2)+' л/год</td><td data-v="'+G.total+'">'+fmt(G.total,1)+'</td><td>'+num(P.kwhYear)+'</td><td data-v="'+P.litresYear+'">'+num(P.litresYear,1)+'</td><td data-v="'+P.genYear+'">'+fmt(P.genYear)+'</td><td data-v="'+(-P.saveYear)+'">'+fmt(-P.saveYear)+'</td><td class="strong" data-v="'+P.netYear+'">'+fmt(P.netYear)+'</td></tr>';
       var msg = G.overEff ? 'навантаження '+num(G.eff,2)+' кВт більше за потужність генератора '+num(s.kw,1)+' кВт.</strong> Генератор його не потягне; пальне рахуємо як при 100%, кВт·год — за потужністю.'
         : G.overPeak ? 'пікове навантаження '+num(G.peak,2)+' кВт (усе на повну) більше за потужність '+num(s.kw,1)+' кВт.</strong> Не вмикайте нагрів машини, кавомолки й інше одночасно або візьміть потужніший генератор.' : null;
       if (msg) { var hit = warns.filter(function(x){ return x.msg === msg; })[0]; if (hit) hit.who.push(pt.name); else warns.push({msg:msg, who:[pt.name]}); }
@@ -1087,7 +1105,9 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
     var hm = '<thead><tr><th></th>'+MN.map(function(m){ return '<th>'+m+'</th>'; }).join("")+'</tr></thead><tbody>';
     hm += '<tr><td>Години</td>'+H.map(function(x){ return '<td class="dim">'+(x > 0 ? num(x) : '—')+'</td>'; }).join("")+'</tr>';
     POINTS.forEach(function(pt){ var P = R.points[pt.id];
-      hm += '<tr><td>'+pt.name+'</td>'+P.gm.map(function(x){ return '<td data-v="'+x.total+'">'+(x.total > 0 ? fmt(x.total) : '—')+'</td>'; }).join("")+'</tr>';
+      hm += '<tr><td><strong>'+pt.name+'</strong>, генератор</td>'+P.gm.map(function(x){ return '<td data-v="'+x.total+'">'+(x.total > 0 ? fmt(x.total) : '—')+'</td>'; }).join("")+'</tr>';
+      hm += '<tr><td class="dim">економія на світлі</td>'+P.sv.map(function(x){ return '<td class="dim" data-v="'+(-x)+'">'+(x > 0 ? fmt(-x) : '—')+'</td>'; }).join("")+'</tr>';
+      hm += '<tr><td class="dim">різниця</td>'+P.net.map(function(x){ return '<td class="strong" data-v="'+x+'">'+(Math.abs(x) > 0.005 ? fmt(x) : '—')+'</td>'; }).join("")+'</tr>';
     });
     el("tbl-gen-months").innerHTML = hm + '</tbody>';
     el("gen-warns").innerHTML = warns.map(function(x){ return '<div class="warn"><strong>'+(x.who.length === POINTS.length ? 'Усі три точки' : x.who.join(', '))+': '+x.msg+'</div>'; }).join("");
@@ -1102,11 +1122,11 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
     el("figs-"+pid).innerHTML = [
       fig("Гроші на руках в середньому за місяць", fmt(P.avg), negc(P.avg), "з урахуванням генератора взимку · без пального " + fmt(P.avg0), true),
       fig("За рік", fmt(P.year), negc(P.year), "без пального " + fmt(P.year0), true),
-      fig(anyOut ? "Найважчий місяць — " + MF[wi].toLowerCase() : "Найважчий місяць", fmt(P.worst), negc(P.worst), anyOut ? num(state.g.hours[wi]) + " год відключень, генератор " + fmt(P.gm[wi].total) : "без відключень", true)
+      fig(anyOut ? "Найважчий місяць — " + MF[wi].toLowerCase() : "Найважчий місяць", fmt(P.worst), negc(P.worst), anyOut ? num(state.g.hours[wi]) + " год відключень: генератор " + fmt(P.gm[wi].total) + ", економія на світлі " + fmt(P.sv[wi]) : "без відключень", true)
     ].join("");
     el("figs2-"+pid).innerHTML = [
       fig("Маржа", pct(res.margin), negc(res.margin), "гроші на руках ÷ виторг"),
-      fig("Генератор за рік", fmt(P.genYear), "", num(P.litresYear,1) + " л · " + num(P.kwhYear) + " кВт·год"),
+      fig("Генератор − економія за рік", fmt(P.netYear), "", "генератор " + fmt(P.genYear) + " · економія на світлі " + fmt(P.saveYear)),
       fig("Беззбитковий чек", fmt(res.actualCheck*bef,1), "", isFinite(bef) ? sgnPct((bef-1)*100) + " до фактичного " + fmt(res.actualCheck,1) : "недосяжний")
     ].join("");
 
@@ -1124,11 +1144,12 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
       ["Бариста, оплата за зміни", sA.bFixed],
       ["Бариста, % від продажів", sA.bPct],
       ["Оренда", sA.rent],
-      ["Комунальні", sA.utilities],
+      ["Комунальні", sA.utilities + P.saveYear / 12 * nA],
       ["Податки (єдиний, збір, ЄСВ)", sA.taxes],
       ["Комісія за картки", sA.fees],
       ["Інше (списання, каса, сервіс, маркетинг)", sA.writeoff + sA.pos + sA.maint + sA.marketing],
-      ["Генератор: пальне й олива (річний ÷ 12)", sA.gen, "gen"]
+      ["Генератор: пальне й олива (річний ÷ 12)", sA.gen, "gen"],
+      ["Економія на світлі (відключення, річна ÷ 12)", -P.saveYear / 12 * nA, "gen"]
     ];
     var li = '<li style="font-weight:600"><span>Виторг</span><span class="v">'+fmt(Rv)+'</span><span class="p">100%</span></li>';
     li += items.map(function(i){ return '<li class="'+(i[2]||"")+'"><span>'+i[0]+'</span><span class="v">'+fmt(i[1]/nA)+'</span><span class="p">'+pct(Rv>0?i[1]/nA/Rv:NaN)+'</span></li>'; }).join("");
@@ -1136,13 +1157,14 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
     el("bd-"+pid).innerHTML = li;
 
     // month table
-    var h = '<thead><tr><th>Місяць</th><th>Виторг</th><th>Собів., %</th><th>Сер. чек</th><th>Бариста</th><th>Собів. + упак.</th><th>Інші змінні</th><th>Податки</th><th>Постійні</th><th>Генератор</th><th class="strong">Гроші на руках</th></tr></thead><tbody>';
+    var h = '<thead><tr><th>Місяць</th><th>Виторг</th><th>Собів., %</th><th>Сер. чек</th><th>Бариста</th><th>Собів. + упак.</th><th>Інші змінні</th><th>Податки</th><th>Постійні</th><th>Генератор</th><th>Економія на світлі</th><th class="strong">Гроші на руках</th></tr></thead><tbody>';
     function row(label, r, cls){
       var gross = r.revenue - r.food;
-      return '<tr class="'+(cls||"")+'"><td>'+label+'</td><td title="Робочих днів: '+r.days+'; валовий прибуток '+fmt(gross)+'">'+fmt(r.revenue)+'</td><td>'+pct(r.revenue>0?r.food/r.revenue:NaN)+'</td><td title="Чеків: '+num(r.receipts)+'">'+fmt(r.revenue/r.receipts,1)+'</td><td>'+fmt(r.barista)+'</td><td>'+fmt(r.food+r.pack)+'</td><td>'+fmt(r.otherVar)+'</td><td>'+fmt(r.taxes)+'</td><td>'+fmt(r.fixedOps)+'</td><td>'+fmt(r.gen)+'</td><td class="strong'+negc(r.cash)+'" data-v="'+r.cash+'">'+fmt(r.cash)+'</td></tr>';
+      return '<tr class="'+(cls||"")+'"><td>'+label+'</td><td title="Робочих днів: '+r.days+'; валовий прибуток '+fmt(gross)+'">'+fmt(r.revenue)+'</td><td>'+pct(r.revenue>0?r.food/r.revenue:NaN)+'</td><td title="Чеків: '+num(r.receipts)+'">'+fmt(r.revenue/r.receipts,1)+'</td><td>'+fmt(r.barista)+'</td><td>'+fmt(r.food+r.pack)+'</td><td>'+fmt(r.otherVar)+'</td><td>'+fmt(r.taxes)+'</td><td>'+fmt(r.fixedOps + (r.saving || 0))+'</td><td>'+fmt(r.gen)+'</td><td>'+fmt(-(r.saving || 0))+'</td><td class="strong'+negc(r.cash)+'" data-v="'+r.cash+'">'+fmt(r.cash)+'</td></tr>';
     }
     rows.forEach(function(r){ h += row(mlabel(r.month), r); });
     var avgRow = {}; Object.keys(sum).forEach(function(k){ avgRow[k] = sum[k] / n; });
+    avgRow.saving = rows.reduce(function(a, r){ return a + r.saving; }, 0) / n;
     h += '</tbody><tbody>' + row("Середнє квіт. – вер.", avgRow, "tot") + '</tbody>';
     el("tbl-"+pid).innerHTML = h;
   }
@@ -1173,11 +1195,44 @@ function generatorModel(g, hours, fuelPrice, maintPerHour){
       s += '<rect x="'+(cx - bw/2)+'" y="'+yt+'" width="'+bw+'" height="'+hh+'" fill="'+(q < 0 ? '#9b2c2c' : '#111')+'"/>';
       s += '<text x="'+cx+'" y="'+(H-6)+'" text-anchor="middle">'+mshort(P.rows[i].month)+'</text>';
     });
+    // invisible full-height hit areas, one per month (easy to hit thin or negative bars)
+    v.forEach(function(q, i){
+      s += '<rect class="hit" data-pid="'+pid+'" data-i="'+i+'" tabindex="0" role="button" aria-label="'+mlabel(P.rows[i].month)+': гроші на руках '+fmt(q)+'" x="'+(padL + gw*i)+'" y="'+padT+'" width="'+gw+'" height="'+ih+'"/>';
+    });
     s += '<line x1="'+padL+'" x2="'+(padL+iw)+'" y1="'+y0+'" y2="'+y0+'" stroke="#111" stroke-width="1"/>';
     sv.setAttribute("viewBox", "0 0 "+W+" "+H); sv.setAttribute("width", W); sv.setAttribute("height", H);
     sv.setAttribute("aria-label", "Гроші на руках за місяць: " + P.rows.map(function(r){ return mlabel(r.month) + " " + fmt(r.cash); }).join(", "));
     sv.innerHTML = s;
   }
+  // ---- bar tooltips: same values and formatting as the month table row
+  function tipRows(r){
+    return [["Виторг", fmt(r.revenue)], ["Чеки", num(r.receipts)], ["Середній чек", fmt(r.revenue/r.receipts,1)], ["Собів. + упаковка", fmt(r.food+r.pack)],
+      ["Інші змінні", fmt(r.otherVar)], ["Бариста", fmt(r.barista)], ["Податки", fmt(r.taxes)], ["Постійні", fmt(r.fixedOps + (r.saving || 0))], ["Генератор (пальне й олива)", fmt(r.gen)], ["Економія на світлі", fmt(-(r.saving || 0))]];
+  }
+  function showTip(hit){
+    var pid = hit.getAttribute("data-pid"), i = +hit.getAttribute("data-i"), r = last.points[pid].rows[i];
+    var tip = el("tip-"+pid), wrapEl = el("mini-wrap-"+pid);
+    hideTips(pid);
+    tip.innerHTML = '<b>'+mlabel(r.month)+'</b>' + tipRows(r).map(function(x){ return '<div class="r"><span>'+x[0]+'</span><span>'+x[1]+'</span></div>'; }).join("") +
+      '<div class="r cash"><span>Гроші на руках</span><span class="'+negc(r.cash).trim()+'">'+fmt(r.cash)+'</span></div>';
+    tip.classList.add("show");
+    var wb = wrapEl.getBoundingClientRect(), hb = hit.getBoundingClientRect(), tw = tip.offsetWidth;
+    var x = hb.left - wb.left + hb.width/2 - tw/2;
+    tip.style.left = Math.max(0, Math.min(wb.width - tw, x)) + "px";
+    tip.style.top = "0px";
+  }
+  function hideTips(except){ POINTS.forEach(function(pt){ if (pt.id !== except) el("tip-"+pt.id).classList.remove("show"); }); }
+  POINTS.forEach(function(pt){
+    var sv = el("mini-"+pt.id);
+    sv.addEventListener("pointerover", function(e){ if (e.target.classList.contains("hit")) showTip(e.target); });
+    sv.addEventListener("focusin", function(e){ if (e.target.classList.contains("hit")) showTip(e.target); });
+    sv.addEventListener("click", function(e){ if (e.target.classList.contains("hit")) { e.stopPropagation(); showTip(e.target); } });
+    sv.addEventListener("pointerleave", function(e){ if (e.pointerType !== "touch") el("tip-"+pt.id).classList.remove("show"); });
+    sv.addEventListener("focusout", function(){ el("tip-"+pt.id).classList.remove("show"); });
+  });
+  document.addEventListener("click", function(e){ if (!(e.target.classList && e.target.classList.contains("hit"))) hideTips(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") hideTips(); });
+
   function redrawVisible(){ if (!last) return; POINTS.forEach(function(pt){ renderMini(pt.id, last.points[pt.id]); }); }
   var rt;
   window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(redrawVisible, 120); });
