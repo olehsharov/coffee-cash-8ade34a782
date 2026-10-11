@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light only">
+<title>Coffee Cash on Hand</title>
+<style>
+:root{
+  color-scheme:light;
+  --ink:#111111;
+  --ink-2:#555555;
+  --ink-3:#767676;
+  --rule:#e2e2e2;
+  --rule-2:#c4c4c4;
+  --neg:#9b2c2c;
+  --fill:#f5f5f5;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{background:#ffffff;-webkit-text-size-adjust:100%}
+body{margin:0;background:#ffffff;color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;font-variant-numeric:tabular-nums lining-nums}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 16px 80px}
+@media (min-width:720px){.wrap{padding:64px 32px 96px}}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:0}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.1}
+h2{font-size:26px;line-height:1.2}
+h3{font-size:18px;line-height:1.3}
+p{margin:0}
+a{color:var(--ink)}
+.muted{color:var(--ink-2)}
+.small{font-size:13px}
+.neg{color:var(--neg)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+header.top{border-bottom:1px solid var(--ink);padding-bottom:22px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:10px}
+.lede{color:var(--ink-2);margin-top:12px;max-width:68ch}
+
+/* scenario strip */
+.scenario{display:flex;flex-wrap:wrap;gap:18px 40px;padding:18px 0;border-bottom:1px solid var(--rule);align-items:flex-start}
+.ctl{min-width:0}
+.ctl-l{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px;display:block}
+.ctl.grow{flex:1 1 300px}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg label{display:block;position:relative;padding:5px 12px;font-size:14px;cursor:pointer;border-right:1px solid var(--ink);user-select:none}
+.seg label:last-child{border-right:0}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.seg label:has(input:checked){background:var(--ink);color:#fff}
+.seg label:has(input:focus-visible){outline:2px solid var(--ink);outline-offset:2px}
+.slider-row{display:flex;align-items:center;gap:10px}
+input[type=range]{flex:1;min-width:0;accent-color:var(--ink);margin:0;height:24px}
+input[type=number]{width:96px;font:inherit;font-size:14px;font-variant-numeric:tabular-nums;color:var(--ink);background:#fff;border:1px solid var(--rule-2);border-radius:0;padding:4px 6px;text-align:right}
+input[type=number]:disabled{color:var(--ink-3);background:var(--fill)}
+input[type=number].changed{border-color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
+.unit{font-size:13px;color:var(--ink-2);white-space:nowrap}
+.ctl-out{font-size:13px;color:var(--ink-2);margin-top:4px}
+
+/* warnings */
+.warns{margin-top:14px}
+.warn{color:var(--neg);font-size:14px;padding:6px 0 6px 14px;border-left:2px solid var(--neg);margin-top:8px;max-width:80ch}
+.warn strong{font-weight:600}
+.caution{color:var(--ink-2);border-left-color:var(--rule-2)}
+
+section.sec{margin-top:64px}
+.sec-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--ink);margin-bottom:22px}
+.sec-head .muted{font-size:14px}
+.sub-h{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:400;margin:36px 0 10px}
+.intro{color:var(--ink-2);font-size:14px;max-width:72ch;margin-bottom:16px}
+
+/* key figures */
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.fig{padding:14px 20px 16px 0}
+.fig + .fig{padding-left:20px;border-left:1px solid var(--rule)}
+@media (max-width:560px){.figs{grid-template-columns:repeat(2,minmax(0,1fr));border-top:0}.fig,.fig + .fig{padding:12px 10px 12px 0;border-left:0;border-top:1px solid var(--rule)}.fig.lead{grid-column:1 / -1}.fig .v{font-size:20px}.fig.lead .v{font-size:30px}}
+.fig .l{font-size:13px;color:var(--ink-2)}
+.fig .v{font-size:24px;line-height:1.25;margin-top:4px;white-space:nowrap}
+.fig.lead .v{font-size:32px}
+.fig .n{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+
+/* chart */
+.chart{margin-top:28px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart svg text{font-family:var(--sans);font-size:11.5px;fill:var(--ink-2)}
+.chart .cap{font-size:12.5px;color:var(--ink-3);margin-top:6px}
+
+/* tables */
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:7px 0 7px 14px;text-align:right;white-space:nowrap;vertical-align:baseline}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+thead th{font-weight:400;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--ink);padding-top:0}
+tbody td{border-bottom:1px solid var(--rule)}
+tr.tot td{border-top:1px solid var(--ink);border-bottom:0;font-weight:600}
+td.strong,th.strong{font-weight:600}
+td.dim{color:var(--ink-3)}
+table.wide{min-width:880px}
+table.pt{min-width:760px}
+table.mid{min-width:560px}
+
+/* breakdown list */
+.blist{list-style:none;margin:0;padding:0;columns:2;column-gap:48px}
+@media (max-width:640px){.blist{columns:1}}
+.blist li{break-inside:avoid}
+.blist li{display:grid;grid-template-columns:minmax(0,1fr) auto 4.4em;gap:10px;padding:6px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.blist li .v,.blist li .p{text-align:right}
+.blist li .p{color:var(--ink-3)}
+.blist li.gen{font-style:italic}
+.blist li.cash{font-weight:600;border-bottom:1px solid var(--ink);border-top:1px solid var(--ink)}
+
+/* collapsibles & inputs */
+details.box{border-top:1px solid var(--rule);margin-top:28px}
+details.box:last-of-type{border-bottom:1px solid var(--rule)}
+details.box > summary{cursor:pointer;list-style:none;padding:12px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+details.box > summary::-webkit-details-marker{display:none}
+details.box > summary .t{font-size:15px}
+details.box > summary .m{font-size:13px;color:var(--ink-2)}
+details.box > summary .m::after{content:"Show";margin-left:8px;text-decoration:underline;text-underline-offset:3px}
+details.box[open] > summary .m::after{content:"Hide"}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 48px;padding:4px 0 20px}
+@media (max-width:720px){.form{grid-template-columns:minmax(0,1fr)}}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);padding:0;margin:14px 0 6px}
+.field{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center;padding:6px 0;border-bottom:1px solid var(--rule)}
+.field label{font-size:14px}
+.field .inp{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.field .unit{min-width:3.4em}
+.field .hint{grid-column:1 / -1;font-size:12.5px;color:var(--ink-3);line-height:1.45}
+.field.off{opacity:.45}
+.check{display:flex;gap:8px;align-items:flex-start;font-size:14px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.check input{margin-top:4px;accent-color:var(--ink)}
+.btn{font:inherit;font-size:13px;background:#fff;color:var(--ink);border:1px solid var(--ink);border-radius:0;padding:5px 12px;cursor:pointer}
+.btn:hover{background:var(--ink);color:#fff}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.equip{width:100%;min-width:0}
+.equip td,.equip th{padding:5px 0 5px 10px}
+.equip th:first-child,.equip td:first-child{padding-left:0;white-space:normal;text-align:left}
+.equip input[type=number]{width:62px}
+.equip td.k{min-width:4.5em}
+
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 48px;font-size:14px;color:var(--ink-2)}
+@media (max-width:720px){.notes{grid-template-columns:minmax(0,1fr)}}
+.notes p strong{color:var(--ink);font-weight:600}
+.notes.one{grid-template-columns:minmax(0,1fr);max-width:80ch}
+.src{font-size:13px;color:var(--ink-2);padding-left:18px;margin:8px 0 0}
+.src li{margin:4px 0}
+.src a{word-break:break-word}
+footer{margin-top:64px;padding-top:14px;border-top:1px solid var(--ink);font-size:13px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">Героев Днепра 23 · Гагарина 21 · Cherkasy · Apr – Sep 2026</div>
+  <h1>Coffee cash on hand</h1>
+  <p class="lede">The cash each point would have accumulated from ₴0 on 1 April 2026, month by month to 30 September, using real POS revenue and the cost assumptions below. A generator fuel line for blackouts is added to every point. No figures beyond September are projected.</p>
+</header>
+
+<div class="scenario" id="scenario">
+  <div class="ctl">
+    <span class="ctl-l" id="lbl-fop">Tax regime (ФОП, one owner)</span>
+    <div class="seg" role="radiogroup" aria-labelledby="lbl-fop" id="fop-seg">
+      <label><input type="radio" name="fopGroup" value="1"><span>Group 1</span></label>
+      <label><input type="radio" name="fopGroup" value="2"><span>Group 2</span></label>
+      <label><input type="radio" name="fopGroup" value="3"><span>Group 3</span></label>
+    </div>
+  </div>
+  <div class="ctl">
+    <label class="ctl-l" for="g-blackoutHours">Blackout hours / month <span style="text-transform:none;letter-spacing:0">(assumption)</span></label>
+    <div class="slider-row"><input type="number" id="g-blackoutHours" min="0" step="5" inputmode="decimal"><span class="unit">h in opening hours</span></div>
+  </div>
+  <div class="ctl grow">
+    <label class="ctl-l" for="g-checkPct">Average check change, all points</label>
+    <div class="slider-row">
+      <input type="range" id="r-checkPct" min="-100" max="500" step="1" aria-label="Average check change slider">
+      <input type="number" id="g-checkPct" min="-100" max="500" step="1" inputmode="decimal" style="width:70px"><span class="unit">%</span>
+    </div>
+    <div class="ctl-out" id="out-check"></div>
+  </div>
+</div>
+<div class="warns" id="global-warns"></div>
+
+<!-- 1. CASH ON HAND -->
+<section class="sec" aria-labelledby="coh-h" style="margin-top:44px">
+  <div class="sec-head"><h2 id="coh-h">Cash on hand</h2><span class="muted">balance at month end, from ₴0 on 1 Apr 2026</span></div>
+  <div class="figs" id="coh-figs"></div>
+  <div class="chart" id="chart-wrap">
+    <svg id="chart" role="img" aria-label="Cumulative cash on hand by month"></svg>
+    <div class="cap">Black: all three points combined. Grey: each point. Generator fuel included.</div>
+  </div>
+
+  <h3 class="sub-h">Combined, month by month</h3>
+  <div class="tscroll" tabindex="0" aria-label="Combined monthly table">
+    <table class="mid" id="tbl-combined"></table>
+  </div>
+
+  <h3 class="sub-h">Cash on hand by point, end of month</h3>
+  <div class="tscroll" tabindex="0" aria-label="Cash on hand by point">
+    <table class="mid" id="tbl-bypoint"></table>
+  </div>
+</section>
+
+<!-- 2. GENERATOR -->
+<section class="sec" aria-labelledby="gen-h">
+  <div class="sec-head"><h2 id="gen-h">Generator fuel during blackouts</h2><span class="muted" id="gen-sub"></span></div>
+  <p class="intro">During each blackout hour inside opening hours the point runs on a petrol generator. Fuel per hour depends on how loaded the generator is: the effective load (each item’s kW × its average use) divided by the generator’s rated output, interpolated between its consumption at 50% and at 100% load. All inputs are assumptions; edit them per point in each point’s inputs below.</p>
+  <div class="tscroll" tabindex="0" aria-label="Generator summary by point">
+    <table class="wide" id="tbl-gen"></table>
+  </div>
+  <div class="warns" id="gen-warns"></div>
+
+  <div class="form" style="margin-top:20px;padding-bottom:0">
+    <fieldset>
+      <legend>Shared generator assumptions</legend>
+      <div class="field"><label for="g-fuelPrice">A-92 petrol price</label><div class="inp"><input type="number" id="g-fuelPrice" min="0" step="0.01" inputmode="decimal"><span class="unit">₴/l</span></div>
+        <div class="hint">Ukraine average ₴86.01/l on 9 Oct 2026 (Мінфін, А-95 Consulting Group). Note: many 6 kW models specify A-95 (₴89.17/l the same day).</div></div>
+      <div class="field"><label for="g-genMaint">Oil &amp; maintenance</label><div class="inp"><input type="number" id="g-genMaint" min="0" step="0.5" inputmode="decimal"><span class="unit">₴/engine-h</span></div>
+        <div class="hint">0.6 l of 4T 10W-30 (≈₴200–310) every 50 engine-hours ≈ ₴5/h, owner-serviced. A paid service visit (≈$80 every 75 h, Senci) is ≈₴48/h.</div></div>
+    </fieldset>
+    <fieldset>
+      <legend>How the fuel is calculated</legend>
+      <p class="small muted" style="padding-top:6px">Load ratio = effective load ÷ rated kW. Fuel l/h = l/h at 50% + (l/h at 100% − l/h at 50%) × (ratio − 0.5) ÷ 0.5, extended below 50% along the same line (never below 0) and capped at the 100% figure. Litres = blackout hours × l/h. Cost = litres × price + hours × oil &amp; maintenance. kWh = effective load × hours. Revenue is assumed unchanged during blackouts (the point keeps trading on the generator); grid utilities are not reduced.</p>
+    </fieldset>
+  </div>
+</section>
+
+<!-- 3. POINTS -->
+<div id="points"></div>
+
+<!-- 4. SHARED TAX -->
+<section class="sec" aria-labelledby="tax-h">
+  <div class="sec-head"><h2 id="tax-h">Tax (ФОП), shared by all points</h2></div>
+  <p class="intro">Group 3: single tax and military levy as a % of each point’s revenue. Groups 1 and 2: fixed ₴/month amounts instead. The owner’s ЄСВ applies under every group. As in the original pages, each point’s model carries its own ЄСВ and fixed tax; see the note below.</p>
+  <details class="box">
+    <summary><span class="t">Tax rates</span><span class="m"></span></summary>
+    <div class="form" id="tax-form"></div>
+  </details>
+  <div class="notes one" style="margin-top:20px">
+    <p><strong>Group limits (2026).</strong> Group 1: income up to ₴1 444 049 a year, no hired employees, individuals only as buyers, no РРО/ПРРО needed. Group 2: up to ₴7 211 598 a year (834 minimum wages), up to 10 employees, buyers individuals and single-tax payers, restaurant/café services allowed. Group 1 fixed tax up to ₴332.80/month (10% of the ₴3 328 subsistence minimum), group 2 up to ₴1 729.40/month (20% of the ₴8 647 minimum wage); the local council sets the exact rate. Military levy ₴864.70/month for groups 1 and 2, 1% of revenue for group 3. ЄСВ minimum ₴1 902.34/month. Warnings compare annualised Apr – Sep revenue (× 2) with the limit, for each point and for the three points combined, since the limit applies to the owner’s total income.</p>
+    <p><strong>ЄСВ and fixed tax are counted once per point.</strong> Each point’s model includes the owner’s ЄСВ (and, under groups 1 – 2, the fixed single tax and levy), exactly as in the original single-point pages. For one ФОП owning all three points these are paid once, so the combined total understates cash by about <span id="dup-tax"></span> over Apr – Sep. Not adjusted here; see open questions.</p>
+  </div>
+</section>
+
+<!-- 5. NOTES -->
+<section class="sec" aria-labelledby="notes-h">
+  <div class="sec-head"><h2 id="notes-h">Method &amp; sources</h2></div>
+  <div class="notes">
+    <p><strong>Cash.</strong> Monthly cash = revenue − barista − variable costs − fixed costs − generator. Before depreciation, loans and the owner’s own time. Cash on hand is the running sum of monthly cash from ₴0 on 1 Apr 2026. All figures in UAH.</p>
+    <p><strong>Average check what-if.</strong> Moves every month’s average check by the same %; receipts stay at their recorded counts, so revenue moves by the same %. Cost of goods and other revenue-linked costs scale with it (a bigger check means more items per order). A pure price rise would lower the cost-of-goods %; test that with each point’s override. Break-even avg check = the check at which that point’s Apr – Sep cash is zero.</p>
+    <p><strong>Blackout hours.</strong> No official Укренерго forecast for winter 2026 – 27 was found. Experts quoted in October 2026 expect morning and evening outages of 2 – 4 hours at −10 °C without new strikes (УНІАН), and up to 6 hours a day in some cities (Главред). The default of 60 h a month (≈2 h each open day) is a round assumption, applied to every month.</p>
+    <p><strong>Equipment defaults.</strong> 2-group espresso machine 4.5 kW (3 – 5 kW typical for 2 groups, ADS Coffee Supplies), heaters on ≈30% of the time (20 – 35% duty for commercial machines, Pro Coffee Gear). Grinder 0.35 kW each (Mazzer Super Jolly), running ≈10% of the time. Under-counter fridge 0.2 kW at 30% (ENERGY STAR units average 35 – 40 W; door openings add more). LED lighting, POS and router at 100%. Generator: 6 kW rated, 2.5 l/h at full load (MB7000E-A spec), 1.6 l/h at 50% (60 – 70% of full-load use, Rental Power).</p>
+  </div>
+  <ol class="src">
+    <li>A-92 price: <a href="https://index.minfin.com.ua/ua/markets/fuel/a92/">index.minfin.com.ua/ua/markets/fuel/a92</a> (₴86.01, 9 Oct 2026); <a href="https://auto.ria.com/uk/toplivo/a92/">AUTO.RIA</a> (₴85.40, 8 Oct 2026).</li>
+    <li>Generator consumption: <a href="https://oz.com.ua/pr-generator-mb7000e-a.html">MB7000E-A, 6 kW</a>; <a href="https://rental-power.com.ua/ua/rashod-topliva-generatora/">Rental Power, consumption vs load</a>; <a href="https://genergy.es/ua/blog/consumos/cuanto-consume-generador-gasolina-diesel/">Genergy</a>.</li>
+    <li>Equipment: <a href="https://ads-coffee-supplies.co.uk/how-much-power-does-a-commercial-coffee-machine-use/">ADS Coffee Supplies</a>; <a href="https://procoffeegear.com/blogs/articles/espresso-machine-wattage-energy-guide">Pro Coffee Gear</a>; <a href="https://www.wholelattelove.com/products/mazzer-super-jolly-grinder">Mazzer Super Jolly, 350 W</a>; <a href="https://www.energystar.gov/productfinder/product/certified-commercial-refrigerators-and-freezers/details/2404024">ENERGY STAR under-counter fridge</a>.</li>
+    <li>Oil &amp; maintenance: <a href="https://genset.com.ua/ua/%D0%B7%D0%B0%D0%BC%D1%96%D0%BD%D0%B0-%D0%BC%D0%B0%D1%81%D0%BB%D0%B0-%D0%B2-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%96-%D0%B2%D1%96%D0%B4-%D0%BF%D0%B5%D1%80%D0%B5%D1%81%D0%BB%D1%96/">Genset (every 50 engine-hours)</a>; <a href="https://www.motoblok.biz/ua/catalog/11135/masla-i-mastyla/3022/maslo-dlya-4-h-taktnyh-dvyguniv-oil-sae-10w-30-oleo-mac-06l.html">0.6 l 10W-30, ₴198</a>; <a href="https://senci.com.ua/raskhody-na-benzohenerator/">Senci, generator running costs</a>; NBU rate ₴44.85/$ (9 Oct 2026).</li>
+    <li>Blackout outlook: <a href="https://www.unian.ua/economics/energetics/grafik-vidklyuchennya-svitla-v-ukrajini-vzimku-ekspert-ozvuchiv-svizhiy-prognoz-13521474.html">УНІАН</a>; <a href="https://glavred.net/energy/sveta-mozhet-ne-byt-po-6-chasov-v-den-ukraincev-predupredili-ob-otklyucheniyah-10802231.html">Главред</a>; <a href="https://www.obozrevatel.com/ukr/section-ekonomika-glavnaya/communalka/news-bez-opalennya-ta-svitla-po-16-hodyn-na-dobu-ukrayintsyam-rozkryly-realnyy-stsenariy-na-zymu-08-10-2026.html">Обозреватель</a>.</li>
+    <li>Sales data: tochka_1/export_spots_261005 2.xlsx; tochka_2/export_spots_261005 2 (1).xlsx; trc/export_sales_261003.xlsx and (1). Models copied from the three single-point pages.</li>
+  </ol>
+</section>
+
+<footer>
+  <span id="store-note">Edited values are remembered in this browser.</span>
+  <button type="button" class="btn" id="reset-all">Reset everything to defaults</button>
+</footer>
+</div>
+
+<script>
+// CALC-START
+// Each point's model is copied from its single-point page (between CALC-START and CALC-END there).
+// The only changes are the lines marked "GEN": a monthly generator cost (p.genCost, ₴/month) added
+// to fixed costs, carried in sumRows, and included in break-even. With p.genCost = 0 the results are
+// identical to the originals. Cherkasy also gets an "l6" (Apr – Sep 2026) period for this page.
+var MODELS = {};
+
+MODELS.geroev = (function(){
+// [month, trading days, calendar days, revenue (Оплачено), receipts (Чеки), gross profit (Прибуток)]
+var MONTHS = [["2026-01", 6, 31, 9989.93, 102, 6887.29], ["2026-03", 5, 31, 9090.5, 95, 6278.7], ["2026-04", 30, 30, 78263.2, 800, 50548.73], ["2026-05", 31, 31, 100129.5, 979, 63523.95], ["2026-06", 30, 30, 96954.0, 941, 58534.7], ["2026-07", 31, 31, 96129.5, 975, 59916.23], ["2026-08", 31, 31, 102901.04, 1043, 65471.87], ["2026-09", 30, 30, 110037.38, 1140, 73084.1]].map(function(r){return {month:r[0],days:r[1],calDays:r[2],revenue:r[3],receipts:r[4],profit:r[5],
+  cogsRate:1 - r[5]/r[3], partial:r[1] < r[2]};});
+
+var ACTUAL_COGS_PCT = 36.3; // all rows: 1 − Σprofit/Σrevenue
+var DEFAULTS = {
+  rent:11000, utilities:4000, pos:540, maint:1500, esv:1902.34,
+  shiftRate:600, baristaPct:5, perDay:true, shifts:30,
+  actualCogs:true, food:ACTUAL_COGS_PCT, pack:5, writeoff:2, cardFee:1.3, cardShare:70, tax:5, levy:1, marketing:0,
+  fopGroup:3, g1Tax:332.80, g1Levy:864.70, g2Tax:1729.40, g2Levy:864.70,
+  checkPct:0
+};
+var DAYS_PER_MONTH = 30.4;
+var FOP_INCOME_LIMIT = {1:1444049, 2:7211598}; // ФОП group 1 / group 2 annual income limits, 2026 (167 / 834 min wages)
+
+var PERIODS = {
+  l6:  {label:"Last 6 months (Apr – Sep 2026)", test:function(m){return m>="2026-04" && m<="2026-09";}},
+  l3:  {label:"Last 3 months (Jul – Sep 2026)", test:function(m){return m>="2026-07" && m<="2026-09";}},
+  ytd: {label:"2026 YTD (Jan – Sep, no Feb data)", test:function(m){return m.slice(0,4)==="2026";}}
+};
+
+// fixed monthly single tax + military levy for ФОП groups 1 and 2 (0 under group 3)
+function fopFixedTax(p){
+  return p.fopGroup === 1 ? p.g1Tax + p.g1Levy : p.fopGroup === 2 ? p.g2Tax + p.g2Levy : 0;
+}
+
+function calcMonth(m, p){
+  var R = m.revenue * checkFactor(p);
+  var shifts = p.perDay ? m.days : p.shifts;
+  var bFixed = p.shiftRate * shifts;
+  var bPct = R * p.baristaPct/100;
+  var cogsRate = p.actualCogs ? m.cogsRate : p.food/100;
+  var food = R * cogsRate;
+  var pack = R * p.pack/100;
+  var writeoff = R * p.writeoff/100;
+  var fees = R * (p.cardShare/100) * (p.cardFee/100);
+  var marketing = R * p.marketing/100;
+  // ФОП group 3: single tax + levy as % of revenue; groups 1 and 2: fixed ₴/month amounts instead
+  var turnoverTax = p.fopGroup === 3 ? R * (p.tax + p.levy)/100 : 0;
+  var fixedTax = fopFixedTax(p);
+  var esv = p.esv;
+  var fixedOps = p.rent + p.utilities + p.pos + p.maint;
+  var gen = p.genCost || 0; // GEN
+  var barista = bFixed + bPct;
+  var variable = food + pack + writeoff + fees + turnoverTax + marketing;
+  var fixed = fixedOps + esv + fixedTax + gen; // GEN
+  var cash = R - barista - variable - fixed;
+  return {month:m.month, days:m.days, calDays:m.calDays, partial:m.partial, receipts:m.receipts, actualRevenue:m.revenue,
+    actualProfit:m.profit, revenue:R, gross:R - food, cogsRate:cogsRate, shifts:shifts,
+    bFixed:bFixed, bPct:bPct, barista:barista, food:food, pack:pack, writeoff:writeoff, fees:fees,
+    marketing:marketing, turnoverTax:turnoverTax, fixedTax:fixedTax, esv:esv, rent:p.rent, utilities:p.utilities, pos:p.pos, maint:p.maint,
+    fixedOps:fixedOps, taxes:turnoverTax+fixedTax+esv, otherVar:writeoff+fees+marketing,
+    variable:variable, fixed:fixed, gen:gen, cash:cash}; // GEN
+}
+
+function sumRows(rows){
+  var keys = ["days","receipts","actualRevenue","actualProfit","revenue","gross","bFixed","bPct","barista","food","pack","writeoff","fees","marketing",
+    "turnoverTax","fixedTax","esv","rent","utilities","pos","maint","fixedOps","taxes","otherVar","variable","fixed","gen","cash"]; // GEN
+  var s = {n:rows.length};
+  keys.forEach(function(k){ s[k] = rows.reduce(function(a,r){return a + r[k];},0); });
+  return s;
+}
+
+// cost-of-goods rate used for break-even: revenue-weighted actual rate over the period, or the override
+function periodCogsRate(p, months){
+  if (!p.actualCogs) return p.food/100;
+  var r = months.reduce(function(a,m){return a+m.revenue;},0), g = months.reduce(function(a,m){return a+m.profit;},0);
+  return r > 0 ? 1 - g/r : ACTUAL_COGS_PCT/100;
+}
+
+function breakEvenDaily(p, months){
+  var D = DAYS_PER_MONTH;
+  var shifts = p.perDay ? D : p.shifts;
+  var varRate = (p.baristaPct + periodCogsRate(p, months)*100 + p.pack + p.writeoff + p.cardShare*p.cardFee/100 + (p.fopGroup === 3 ? p.tax + p.levy : 0) + p.marketing)/100;
+  var fixedMonthly = p.rent + p.utilities + p.pos + p.maint + p.esv + fopFixedTax(p) + p.shiftRate*shifts + (p.genCost || 0); // GEN
+  if (varRate >= 1) return Infinity;
+  return fixedMonthly / (1 - varRate) / D;
+}
+
+
+// average-check factor: revenue = actual receipts × actual avg check × (1 + change%) = actual revenue × factor
+function checkFactor(p){ return Math.max(0, 1 + p.checkPct/100); }
+
+// check factor at which the period's total cash is exactly zero (cash is linear in revenue)
+function breakEvenFactor(p, periodKey){
+  var inP = MONTHS.filter(function(m){return PERIODS[periodKey].test(m.month);});
+  var c0 = sumRows(inP.map(function(m){return calcMonth(m, Object.assign({}, p, {checkPct:-100}));})).cash;
+  var c1 = sumRows(inP.map(function(m){return calcMonth(m, Object.assign({}, p, {checkPct:0}));})).cash;
+  var slope = c1 - c0;
+  return slope > 0 ? -c0/slope : Infinity;
+}
+
+function compute(p, periodKey){
+  var rows = MONTHS.map(function(m){return calcMonth(m,p);});
+  var inP = rows.filter(function(r){return PERIODS[periodKey].test(r.month);});
+  var per = sumRows(inP);
+  var l6 = sumRows(rows.filter(function(r){return PERIODS.l6.test(r.month);}));
+  var ytd = sumRows(rows.filter(function(r){return PERIODS.ytd.test(r.month);}));
+  return {
+    rows:rows, period:per, l6:l6, ytd:ytd,
+    avgMonthlyCash: per.cash/per.n,
+    annualRevenue: per.n > 0 ? per.revenue/per.n*12 : 0,
+    avgDailyCash: per.cash/per.days,
+    margin: per.revenue > 0 ? per.cash/per.revenue : NaN,
+    ytdCash: ytd.cash,
+    annualised: l6.cash * 12 / l6.n,
+    breakEven: breakEvenDaily(p, MONTHS.filter(function(m){return PERIODS[periodKey].test(m.month);})),
+    breakEvenFactor: breakEvenFactor(p, periodKey),
+    actualCheck: per.receipts > 0 ? per.actualRevenue/per.receipts : NaN
+  };
+}
+return {MONTHS:MONTHS, DEFAULTS:DEFAULTS, ACTUAL_COGS_PCT:ACTUAL_COGS_PCT, FOP_INCOME_LIMIT:FOP_INCOME_LIMIT, PERIODS:PERIODS,
+  calcMonth:calcMonth, sumRows:sumRows, compute:compute, checkFactor:checkFactor, breakEvenFactor:breakEvenFactor, breakEvenDaily:breakEvenDaily};
+})();
+
+MODELS.gagarina = (function(){
+// [month, trading days, calendar days, revenue (Оплачено), receipts (Чеки), gross profit (Прибуток)]
+var MONTHS = [["2026-01", 26, 31, 61566.5, 708, 41662.7], ["2026-02", 27, 28, 60937.5, 728, 40557.45], ["2026-03", 30, 31, 87345.0, 948, 58334.57], ["2026-04", 29, 30, 82832.5, 912, 56112.82], ["2026-05", 31, 31, 106769.5, 1096, 70222.03], ["2026-06", 30, 30, 101898.5, 1004, 67958.81], ["2026-07", 31, 31, 112019.0, 1157, 75702.06], ["2026-08", 31, 31, 109918.33, 1108, 73284.56], ["2026-09", 30, 30, 99163.0, 1080, 67200.94]].map(function(r){return {month:r[0],days:r[1],calDays:r[2],revenue:r[3],receipts:r[4],profit:r[5],
+  cogsRate:1 - r[5]/r[3], partial:r[1] < r[2]};});
+
+var ACTUAL_COGS_PCT = 33.0; // all rows: 1 − Σprofit/Σrevenue
+var DEFAULTS = {
+  rent:11000, utilities:4000, pos:540, maint:1500, esv:1902.34,
+  shiftRate:600, baristaPct:5, perDay:true, shifts:30,
+  actualCogs:true, food:ACTUAL_COGS_PCT, pack:5, writeoff:2, cardFee:1.3, cardShare:70, tax:5, levy:1, marketing:0,
+  fopGroup:3, g1Tax:332.80, g1Levy:864.70, g2Tax:1729.40, g2Levy:864.70,
+  checkPct:0
+};
+var DAYS_PER_MONTH = 30.4;
+var FOP_INCOME_LIMIT = {1:1444049, 2:7211598}; // ФОП group 1 / group 2 annual income limits, 2026 (167 / 834 min wages)
+
+var PERIODS = {
+  l6:  {label:"Last 6 months (Apr – Sep 2026)", test:function(m){return m>="2026-04" && m<="2026-09";}},
+  l3:  {label:"Last 3 months (Jul – Sep 2026)", test:function(m){return m>="2026-07" && m<="2026-09";}},
+  ytd: {label:"2026 YTD (Jan – Sep)", test:function(m){return m.slice(0,4)==="2026";}}
+};
+
+// fixed monthly single tax + military levy for ФОП groups 1 and 2 (0 under group 3)
+function fopFixedTax(p){
+  return p.fopGroup === 1 ? p.g1Tax + p.g1Levy : p.fopGroup === 2 ? p.g2Tax + p.g2Levy : 0;
+}
+
+function calcMonth(m, p){
+  var R = m.revenue * checkFactor(p);
+  var shifts = p.perDay ? m.days : p.shifts;
+  var bFixed = p.shiftRate * shifts;
+  var bPct = R * p.baristaPct/100;
+  var cogsRate = p.actualCogs ? m.cogsRate : p.food/100;
+  var food = R * cogsRate;
+  var pack = R * p.pack/100;
+  var writeoff = R * p.writeoff/100;
+  var fees = R * (p.cardShare/100) * (p.cardFee/100);
+  var marketing = R * p.marketing/100;
+  // ФОП group 3: single tax + levy as % of revenue; groups 1 and 2: fixed ₴/month amounts instead
+  var turnoverTax = p.fopGroup === 3 ? R * (p.tax + p.levy)/100 : 0;
+  var fixedTax = fopFixedTax(p);
+  var esv = p.esv;
+  var fixedOps = p.rent + p.utilities + p.pos + p.maint;
+  var gen = p.genCost || 0; // GEN
+  var barista = bFixed + bPct;
+  var variable = food + pack + writeoff + fees + turnoverTax + marketing;
+  var fixed = fixedOps + esv + fixedTax + gen; // GEN
+  var cash = R - barista - variable - fixed;
+  return {month:m.month, days:m.days, calDays:m.calDays, partial:m.partial, receipts:m.receipts, actualRevenue:m.revenue,
+    actualProfit:m.profit, revenue:R, gross:R - food, cogsRate:cogsRate, shifts:shifts,
+    bFixed:bFixed, bPct:bPct, barista:barista, food:food, pack:pack, writeoff:writeoff, fees:fees,
+    marketing:marketing, turnoverTax:turnoverTax, fixedTax:fixedTax, esv:esv, rent:p.rent, utilities:p.utilities, pos:p.pos, maint:p.maint,
+    fixedOps:fixedOps, taxes:turnoverTax+fixedTax+esv, otherVar:writeoff+fees+marketing,
+    variable:variable, fixed:fixed, gen:gen, cash:cash}; // GEN
+}
+
+function sumRows(rows){
+  var keys = ["days","receipts","actualRevenue","actualProfit","revenue","gross","bFixed","bPct","barista","food","pack","writeoff","fees","marketing",
+    "turnoverTax","fixedTax","esv","rent","utilities","pos","maint","fixedOps","taxes","otherVar","variable","fixed","gen","cash"]; // GEN
+  var s = {n:rows.length};
+  keys.forEach(function(k){ s[k] = rows.reduce(function(a,r){return a + r[k];},0); });
+  return s;
+}
+
+// cost-of-goods rate used for break-even: revenue-weighted actual rate over the period, or the override
+function periodCogsRate(p, months){
+  if (!p.actualCogs) return p.food/100;
+  var r = months.reduce(function(a,m){return a+m.revenue;},0), g = months.reduce(function(a,m){return a+m.profit;},0);
+  return r > 0 ? 1 - g/r : ACTUAL_COGS_PCT/100;
+}
+
+function breakEvenDaily(p, months){
+  var D = DAYS_PER_MONTH;
+  var shifts = p.perDay ? D : p.shifts;
+  var varRate = (p.baristaPct + periodCogsRate(p, months)*100 + p.pack + p.writeoff + p.cardShare*p.cardFee/100 + (p.fopGroup === 3 ? p.tax + p.levy : 0) + p.marketing)/100;
+  var fixedMonthly = p.rent + p.utilities + p.pos + p.maint + p.esv + fopFixedTax(p) + p.shiftRate*shifts + (p.genCost || 0); // GEN
+  if (varRate >= 1) return Infinity;
+  return fixedMonthly / (1 - varRate) / D;
+}
+
+
+// average-check factor: revenue = actual receipts × actual avg check × (1 + change%) = actual revenue × factor
+function checkFactor(p){ return Math.max(0, 1 + p.checkPct/100); }
+
+// check factor at which the period's total cash is exactly zero (cash is linear in revenue)
+function breakEvenFactor(p, periodKey){
+  var inP = MONTHS.filter(function(m){return PERIODS[periodKey].test(m.month);});
+  var c0 = sumRows(inP.map(function(m){return calcMonth(m, Object.assign({}, p, {checkPct:-100}));})).cash;
+  var c1 = sumRows(inP.map(function(m){return calcMonth(m, Object.assign({}, p, {checkPct:0}));})).cash;
+  var slope = c1 - c0;
+  return slope > 0 ? -c0/slope : Infinity;
+}
+
+function compute(p, periodKey){
+  var rows = MONTHS.map(function(m){return calcMonth(m,p);});
+  var inP = rows.filter(function(r){return PERIODS[periodKey].test(r.month);});
+  var per = sumRows(inP);
+  var l6 = sumRows(rows.filter(function(r){return PERIODS.l6.test(r.month);}));
+  var ytd = sumRows(rows.filter(function(r){return PERIODS.ytd.test(r.month);}));
+  return {
+    rows:rows, period:per, l6:l6, ytd:ytd,
+    avgMonthlyCash: per.cash/per.n,
+    annualRevenue: per.n > 0 ? per.revenue/per.n*12 : 0,
+    avgDailyCash: per.cash/per.days,
+    margin: per.revenue > 0 ? per.cash/per.revenue : NaN,
+    ytdCash: ytd.cash,
+    annualised: l6.cash * 12 / l6.n,
+    breakEven: breakEvenDaily(p, MONTHS.filter(function(m){return PERIODS[periodKey].test(m.month);})),
+    breakEvenFactor: breakEvenFactor(p, periodKey),
+    actualCheck: per.receipts > 0 ? per.actualRevenue/per.receipts : NaN
+  };
+}
+return {MONTHS:MONTHS, DEFAULTS:DEFAULTS, ACTUAL_COGS_PCT:ACTUAL_COGS_PCT, FOP_INCOME_LIMIT:FOP_INCOME_LIMIT, PERIODS:PERIODS,
+  calcMonth:calcMonth, sumRows:sumRows, compute:compute, checkFactor:checkFactor, breakEvenFactor:breakEvenFactor, breakEvenDaily:breakEvenDaily};
+})();
+
+MODELS.cherkasy = (function(){
+var MONTHS = [
+  ["2025-01",30,53572,933],["2025-02",28,50144,847],["2025-03",31,59621,1024],["2025-04",29,67384,1045],
+  ["2025-05",31,71443,1071],["2025-06",30,68896,1022],["2025-07",31,73791,1113],["2025-08",31,75631,1121],
+  ["2025-09",29,53156,837],["2025-10",31,57865,964],["2025-11",30,57188,943],["2025-12",31,65282,1021],
+  ["2026-01",30,60789,950],["2026-02",28,58075,947],["2026-03",31,66783,1048],["2026-04",29,56555,861],
+  ["2026-05",31,66817,944],["2026-06",30,55728,758],["2026-07",31,52701,737],["2026-08",31,71306,902],
+  ["2026-09",30,53829,762]
+].map(function(r){return {month:r[0],days:r[1],revenue:r[2],receipts:r[3]};});
+
+var DEFAULTS = {
+  rent:11000, utilities:4000, pos:540, maint:1500, esv:1902.34,
+  shiftRate:600, baristaPct:5, perDay:true, shifts:30,
+  food:30, pack:5, writeoff:2, cardFee:1.3, cardShare:70, tax:5, levy:1, marketing:0,
+  fopGroup:3, g1Tax:332.80, g1Levy:864.70, g2Tax:1729.40, g2Levy:864.70,
+  checkPct:0
+};
+var DAYS_PER_MONTH = 30.4;
+var FOP_INCOME_LIMIT = {1:1444049, 2:7211598}; // ФОП group 1 / group 2 annual income limits, 2026 (167 / 834 min wages)
+
+var PERIODS = {
+  l12:  {label:"Last 12 months (Oct 2025 – Sep 2026)", test:function(m){return m>="2025-10" && m<="2026-09";}},
+  y2025:{label:"2025", test:function(m){return m.slice(0,4)==="2025";}},
+  y2026:{label:"2026 YTD (Jan – Sep)", test:function(m){return m.slice(0,4)==="2026";}},
+  all:  {label:"All 21 months", test:function(){return true;}},
+  l6:   {label:"Apr – Sep 2026", test:function(m){return m>="2026-04" && m<="2026-09";}} // added for the combined page
+};
+
+// fixed monthly single tax + military levy for ФОП groups 1 and 2 (0 under group 3)
+function fopFixedTax(p){
+  return p.fopGroup === 1 ? p.g1Tax + p.g1Levy : p.fopGroup === 2 ? p.g2Tax + p.g2Levy : 0;
+}
+
+function calcMonth(m, p){
+  var R = m.revenue * checkFactor(p);
+  var shifts = p.perDay ? m.days : p.shifts;
+  var bFixed = p.shiftRate * shifts;
+  var bPct = R * p.baristaPct/100;
+  var food = R * p.food/100;
+  var pack = R * p.pack/100;
+  var writeoff = R * p.writeoff/100;
+  var fees = R * (p.cardShare/100) * (p.cardFee/100);
+  var marketing = R * p.marketing/100;
+  // ФОП group 3: single tax + levy as % of revenue; groups 1 and 2: fixed ₴/month amounts instead
+  var turnoverTax = p.fopGroup === 3 ? R * (p.tax + p.levy)/100 : 0;
+  var fixedTax = fopFixedTax(p);
+  var esv = p.esv;
+  var fixedOps = p.rent + p.utilities + p.pos + p.maint;
+  var gen = p.genCost || 0; // GEN
+  var barista = bFixed + bPct;
+  var variable = food + pack + writeoff + fees + turnoverTax + marketing;
+  var fixed = fixedOps + esv + fixedTax + gen; // GEN
+  var cash = R - barista - variable - fixed;
+  return {month:m.month, days:m.days, receipts:m.receipts, actualRevenue:m.revenue, revenue:R, shifts:shifts,
+    bFixed:bFixed, bPct:bPct, barista:barista, food:food, pack:pack, writeoff:writeoff, fees:fees,
+    marketing:marketing, turnoverTax:turnoverTax, fixedTax:fixedTax, esv:esv, rent:p.rent, utilities:p.utilities, pos:p.pos, maint:p.maint,
+    fixedOps:fixedOps, taxes:turnoverTax+fixedTax+esv, otherVar:writeoff+fees+marketing,
+    variable:variable, fixed:fixed, gen:gen, cash:cash}; // GEN
+}
+
+function sumRows(rows){
+  var keys = ["days","receipts","actualRevenue","revenue","bFixed","bPct","barista","food","pack","writeoff","fees","marketing",
+    "turnoverTax","fixedTax","esv","rent","utilities","pos","maint","fixedOps","taxes","otherVar","variable","fixed","gen","cash"]; // GEN
+  var s = {n:rows.length};
+  keys.forEach(function(k){ s[k] = rows.reduce(function(a,r){return a + r[k];},0); });
+  return s;
+}
+
+function breakEvenDaily(p){
+  var D = DAYS_PER_MONTH;
+  var shifts = p.perDay ? D : p.shifts;
+  var varRate = (p.baristaPct + p.food + p.pack + p.writeoff + p.cardShare*p.cardFee/100 + (p.fopGroup === 3 ? p.tax + p.levy : 0) + p.marketing)/100;
+  var fixedMonthly = p.rent + p.utilities + p.pos + p.maint + p.esv + fopFixedTax(p) + p.shiftRate*shifts + (p.genCost || 0); // GEN
+  if (varRate >= 1) return Infinity;
+  return fixedMonthly / (1 - varRate) / D;
+}
+
+
+// average-check factor: revenue = actual receipts × actual avg check × (1 + change%) = actual revenue × factor
+function checkFactor(p){ return Math.max(0, 1 + p.checkPct/100); }
+
+// check factor at which the period's total cash is exactly zero (cash is linear in revenue)
+function breakEvenFactor(p, periodKey){
+  var inP = MONTHS.filter(function(m){return PERIODS[periodKey].test(m.month);});
+  var c0 = sumRows(inP.map(function(m){return calcMonth(m, Object.assign({}, p, {checkPct:-100}));})).cash;
+  var c1 = sumRows(inP.map(function(m){return calcMonth(m, Object.assign({}, p, {checkPct:0}));})).cash;
+  var slope = c1 - c0;
+  return slope > 0 ? -c0/slope : Infinity;
+}
+
+function compute(p, periodKey){
+  var rows = MONTHS.map(function(m){return calcMonth(m,p);});
+  var inP = rows.filter(function(r){return PERIODS[periodKey].test(r.month);});
+  var per = sumRows(inP);
+  var l12 = sumRows(rows.filter(function(r){return PERIODS.l12.test(r.month);}));
+  var y25 = sumRows(rows.filter(function(r){return PERIODS.y2025.test(r.month);}));
+  var y26 = sumRows(rows.filter(function(r){return PERIODS.y2026.test(r.month);}));
+  return {
+    rows:rows, period:per, l12:l12, y2025:y25, y2026:y26,
+    avgMonthlyCash: per.cash/per.n,
+    annualRevenue: per.n > 0 ? per.revenue/per.n*12 : 0,
+    avgDailyCash: per.cash/per.days,
+    margin: per.revenue > 0 ? per.cash/per.revenue : NaN,
+    l12Cash: l12.cash,
+    annualised2026: y26.cash * 12 / y26.n,
+    breakEven: breakEvenDaily(p),
+    breakEvenFactor: breakEvenFactor(p, periodKey),
+    actualCheck: per.receipts > 0 ? per.actualRevenue/per.receipts : NaN
+  };
+}
+return {MONTHS:MONTHS, DEFAULTS:DEFAULTS, ACTUAL_COGS_PCT:null, FOP_INCOME_LIMIT:FOP_INCOME_LIMIT, PERIODS:PERIODS,
+  calcMonth:calcMonth, sumRows:sumRows, compute:compute, checkFactor:checkFactor, breakEvenFactor:breakEvenFactor, breakEvenDaily:breakEvenDaily};
+})();
+
+// ---- Generator / blackout fuel model (new)
+// g: {kw, c100, c50, equip:[{kw, duty}]}; hours: blackout hours per month in opening hours
+function generatorModel(g, hours, fuelPrice, maintPerHour){
+  var eff = 0, peak = 0;
+  g.equip.forEach(function(e){ eff += e.kw * e.duty/100; peak += e.kw; });
+  var ratio = g.kw > 0 ? eff / g.kw : Infinity;
+  var lph = 0;
+  if (eff > 0) {
+    var r = Math.min(ratio, 1);                         // above rated output: capped at the 100% figure (and warned)
+    lph = Math.max(0, g.c50 + (g.c100 - g.c50) * (r - 0.5) / 0.5);
+  }
+  var litres = hours * lph;
+  var fuelCost = litres * fuelPrice;
+  var maintCost = eff > 0 ? hours * maintPerHour : 0;
+  var kwh = Math.min(eff, g.kw) * hours;
+  return {eff:eff, peak:peak, ratio:ratio, lph:lph, hours:eff > 0 ? hours : 0, litres:litres, kwh:kwh,
+    fuelCost:fuelCost, maintCost:maintCost, total:fuelCost + maintCost, overEff:eff > g.kw, overPeak:peak > g.kw};
+}
+// CALC-END
+
+(function(){
+  var PERIOD = "l6"; // Apr – Sep 2026: the months all three points have in full
+  var MN = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var NNBSP = " ";
+  function el(id){ return document.getElementById(id); }
+  function fmt(v, dec){
+    if (!isFinite(v)) return "—";
+    dec = dec||0;
+    var neg = v < 0; v = Math.abs(v);
+    var s = v.toFixed(dec).split(".");
+    s[0] = s[0].replace(/\B(?=(\d{3})+(?!\d))/g, NNBSP);
+    return (neg && +s.join(".") !== 0 ? "−" : "") + "₴" + s.join(",");
+  }
+  function num(v, dec){
+    if (!isFinite(v)) return "—";
+    var s = Math.abs(v).toFixed(dec||0).split(".");
+    s[0] = s[0].replace(/\B(?=(\d{3})+(?!\d))/g, NNBSP);
+    return (v < 0 && +s.join(".") !== 0 ? "−" : "") + s.join(",");
+  }
+  function pct(v, dec){ if(!isFinite(v)) return "—"; return (v<0?"−":"") + Math.abs(v*100).toFixed(dec==null?1:dec).replace(".",",") + "%"; }
+  function sgnPct(v){ v = Math.round(v*10)/10; return (v>0?"+":v<0?"−":"") + Math.abs(v).toFixed(1).replace(".",",") + "%"; }
+  function negc(v){ return v < 0 && Math.round(v) !== 0 ? " neg" : ""; }
+  function mlabel(m){ return MN[+m.slice(5)-1] + " " + m.slice(0,4); }
+  function mshort(m){ return MN[+m.slice(5)-1]; }
+
+  var POINTS = [
+    {id:"geroev", name:"Героев Днепра 23", short:"Героев Днепра", tiny:"Героев", folder:"tochka_1"},
+    {id:"gagarina", name:"Гагарина 21", short:"Гагарина", tiny:"Гагарина", folder:"tochka_2"},
+    {id:"cherkasy", name:"Cherkasy", short:"Cherkasy", tiny:"Cherkasy", folder:"trc"}
+  ];
+
+  // ---- defaults
+  var TAX_KEYS = ["tax","levy","g1Tax","g1Levy","g2Tax","g2Levy","esv"];
+  var GLOBAL_DEFAULTS = {fopGroup:3, checkPct:0, blackoutHours:60, fuelPrice:86.01, genMaint:5};
+  TAX_KEYS.forEach(function(k){ GLOBAL_DEFAULTS[k] = MODELS.geroev.DEFAULTS[k]; });
+  var EQUIP = [
+    {id:"espresso", label:"Espresso machine, 2-group", kw:4.5, duty:30},
+    {id:"grinders", label:"Grinders (2 × 0.35 kW)", kw:0.7, duty:10},
+    {id:"fridge", label:"Under-counter fridge (milk)", kw:0.2, duty:30},
+    {id:"light", label:"Lighting (LED)", kw:0.15, duty:100},
+    {id:"pos", label:"POS, router, card terminal", kw:0.08, duty:100},
+    {id:"other", label:"Other (blender, signage, small items)", kw:0.5, duty:10}
+  ];
+  function genDefaults(){ return {kw:6, c100:2.5, c50:1.6, equip:EQUIP.map(function(e){ return {id:e.id, kw:e.kw, duty:e.duty}; })}; }
+  function pointDefaults(pid){
+    var d = {};
+    Object.keys(MODELS[pid].DEFAULTS).forEach(function(k){ if (TAX_KEYS.indexOf(k) < 0 && k !== "fopGroup" && k !== "checkPct") d[k] = MODELS[pid].DEFAULTS[k]; });
+    d.gen = genDefaults();
+    return d;
+  }
+  function freshState(){
+    var s = {g:Object.assign({}, GLOBAL_DEFAULTS), p:{}};
+    POINTS.forEach(function(pt){ s.p[pt.id] = pointDefaults(pt.id); });
+    return s;
+  }
+
+  // ---- storage (new key)
+  var KEY = "coffeeCashOnHand.combined.v1";
+  var state = freshState();
+  var storageOk = true;
+  function sameType(a, b){ return typeof a === typeof b && (typeof b !== "number" || isFinite(a)); }
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw) {
+      var saved = JSON.parse(raw);
+      if (saved && saved.g) Object.keys(GLOBAL_DEFAULTS).forEach(function(k){ if (sameType(saved.g[k], GLOBAL_DEFAULTS[k])) state.g[k] = saved.g[k]; });
+      if ([1,2,3].indexOf(state.g.fopGroup) < 0) state.g.fopGroup = 3;
+      state.g.checkPct = Math.min(500, Math.max(-100, Math.round(state.g.checkPct)));
+      POINTS.forEach(function(pt){
+        var sp = saved && saved.p && saved.p[pt.id], dp = state.p[pt.id];
+        if (!sp) return;
+        Object.keys(dp).forEach(function(k){ if (k !== "gen" && sameType(sp[k], dp[k])) dp[k] = sp[k]; });
+        if (sp.gen) {
+          ["kw","c100","c50"].forEach(function(k){ if (sameType(sp.gen[k], dp.gen[k])) dp.gen[k] = sp.gen[k]; });
+          if (Array.isArray(sp.gen.equip)) dp.gen.equip.forEach(function(e){
+            var se = sp.gen.equip.filter(function(x){ return x && x.id === e.id; })[0];
+            if (se) { if (sameType(se.kw, e.kw)) e.kw = se.kw; if (sameType(se.duty, e.duty)) e.duty = se.duty; }
+          });
+        }
+      });
+    }
+  } catch(e){ storageOk = false; }
+  if (!storageOk) el("store-note").textContent = "Values are not saved in this browser (storage unavailable).";
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+
+  // ---- per-point input definitions (from the originals; tax and what-if are global here)
+  function pointGroups(pid){
+    var tochka = pid !== "cherkasy";
+    var cogsTxt = tochka ? String(MODELS[pid].ACTUAL_COGS_PCT).replace(".",",") : "";
+    var ph = tochka ? "Placeholder copied from Cherkasy. " : "Owner-given. ";
+    var variable = tochka ? [
+      {id:"actualCogs", type:"check", label:"Use actual cost of goods from the POS, month by month (overall "+cogsTxt+"%)"},
+      {id:"food", label:"Cost of goods override", unit:"%", step:0.5, hint:"Used only when the box above is off. Default = this location’s actual "+cogsTxt+"%."},
+      {id:"pack", label:"Cups, lids & packaging", unit:"%", step:0.5, hint:"Assumption, typical 4–8%. If cups are in the POS recipes they are already in cost of goods: set 0."}
+    ] : [
+      {id:"food", label:"Food cost (coffee, milk, syrups, snacks)", unit:"%", step:0.5, hint:"Typical 25–35%. Not in the data: an assumption."},
+      {id:"pack", label:"Cups, lids & packaging", unit:"%", step:0.5, hint:"Typical 4–8%."}
+    ];
+    variable = variable.concat([
+      {id:"writeoff", label:"Write-offs", unit:"%", step:0.5, hint:"Expired milk, spoiled snacks; typical 1–3%."},
+      {id:"cardFee", label:"Card fee (acquiring)", unit:"%", step:0.1, hint:"Bank rate on card payments, ~1.3%."},
+      {id:"cardShare", label:"Card share of sales", unit:"%", step:5, hint:"Unknown; not in the export. Fee applies to this share."},
+      {id:"marketing", label:"Marketing", unit:"%", step:0.5, hint:"Ads, promos, loyalty."}
+    ]);
+    return [
+      {title:"Fixed monthly", fields:[
+        {id:"rent", label:"Rent", unit:"₴/mo", step:100, hint:ph + (tochka ? "Set this location’s." : "")},
+        {id:"utilities", label:"Utilities", unit:"₴/mo", step:100, hint:ph + "Power and water."},
+        {id:"pos", label:"POS / software till", unit:"₴/mo", step:10, hint:"Typical ₴150–2 160."},
+        {id:"maint", label:"Equipment maintenance", unit:"₴/mo", step:100, hint:"Grinder, machine service; typical ₴1 000–3 000."}
+      ]},
+      {title:"Barista", fields:[
+        {id:"shiftRate", label:"Pay per shift", unit:"₴", step:50, hint:ph},
+        {id:"baristaPct", label:"Share of sales", unit:"%", step:0.5, hint:"Typical range 2–5%."},
+        {id:"perDay", type:"check", label:"One shift per open day (uses each month’s trading days)"},
+        {id:"shifts", label:"Shifts per month", unit:"shifts", step:1, hint:"Used only when the box above is off."}
+      ]},
+      {title:"Variable (% of revenue)", fields:variable}
+    ];
+  }
+  var TAX_FIELDS = [
+    {id:"tax", label:"Single tax (ФОП group 3)", unit:"%", step:0.5, hint:"5% for non-VAT payers.", grp:3},
+    {id:"levy", label:"Military levy, group 3 (військовий збір)", unit:"%", step:0.5, hint:"1% for group 3 since 2025. Set 0 to exclude.", grp:3},
+    {id:"g1Tax", label:"Single tax (ФОП group 1)", unit:"₴/mo", step:0.01, hint:"Up to ₴332.80 in 2026 (10% of the ₴3 328 subsistence minimum); the local council sets the exact rate.", grp:1},
+    {id:"g1Levy", label:"Military levy, group 1 (військовий збір)", unit:"₴/mo", step:0.01, hint:"₴864.70 in 2026 (10% of the ₴8 647 minimum wage).", grp:1},
+    {id:"g2Tax", label:"Single tax (ФОП group 2)", unit:"₴/mo", step:0.01, hint:"Up to ₴1 729.40 in 2026 (20% of the ₴8 647 minimum wage); the local council sets the exact rate.", grp:2},
+    {id:"g2Levy", label:"Military levy, group 2 (військовий збір)", unit:"₴/mo", step:0.01, hint:"₴864.70 in 2026 (10% of the ₴8 647 minimum wage).", grp:2},
+    {id:"esv", label:"Owner’s social contribution (ЄСВ)", unit:"₴/mo", step:0.01, hint:"2026 minimum ₴1 902.34. Set 0 to exclude.", grp:0}
+  ];
+
+  function fieldHtml(prefix, f){
+    if (f.type === "check") return '<label class="check"><input type="checkbox" id="'+prefix+f.id+'"><span>'+f.label+'</span></label>';
+    return '<div class="field" id="f-'+prefix+f.id+'"><label for="'+prefix+f.id+'">'+f.label+'</label><div class="inp"><input type="number" inputmode="decimal" id="'+prefix+f.id+'" step="'+f.step+'" min="0"><span class="unit">'+f.unit+'</span></div>'+(f.hint?'<div class="hint">'+f.hint+'</div>':'')+'</div>';
+  }
+
+  // ---- build point sections
+  var NOTES = {
+    geroev:[
+      "<strong>Cost of goods is real</strong>: POS “Прибуток” is gross profit after cost of goods, 36.3% of revenue over the export (36.5% Apr – Sep).",
+      "<strong>Gap in the data</strong>: no rows for 5 Jan and 8 Jan – 26 Mar (78 days); February missing, January and March partial. Outside the Apr – Sep window used here.",
+      "<strong>Packaging may be double-counted</strong>: if cups and lids are POS recipe ingredients they are already in cost of goods; set packaging to 0.",
+      "<strong>Placeholders</strong>: rent, utilities and barista pay are copied from Cherkasy. Odd day: 14 Apr, cost of goods 62% of revenue, kept as recorded."
+    ],
+    gagarina:[
+      "<strong>Cost of goods is real</strong>: POS gross profit gives 33.0% cost of goods (33.0% Apr – Sep), by month 32.2% – 34.2%.",
+      "<strong>Packaging may be double-counted</strong>: if cups and lids are POS recipe ingredients they are already in cost of goods; set packaging to 0.",
+      "<strong>Placeholders</strong>: rent, utilities and barista pay are copied from Cherkasy.",
+      "<strong>Calendar</strong>: 12 Apr has no row, so April has 29 trading days."
+    ],
+    cherkasy:[
+      "<strong>Food cost assumed 30%</strong>: the export has revenue and receipts only; its “profit” column equals revenue.",
+      "<strong>Owner-given</strong> rent, utilities and pay per shift; these were copied to the other two points as placeholders.",
+      "<strong>Traffic vs check</strong>: receipts per day fell in summer 2026 against 2025 (≈34–36 → ≈24–29) while the check rose (≈₴67 → ₴71–79).",
+      "<strong>Calendar</strong>: 12 Apr 2026 has no row, so April has 29 trading days."
+    ]
+  };
+  var host = el("points");
+  POINTS.forEach(function(pt){
+    var pid = pt.id, pre = pid + "-";
+    var sec = document.createElement("section"); sec.className = "sec"; sec.id = "pt-"+pid; sec.setAttribute("aria-labelledby", "h-"+pid);
+    var html = '<div class="sec-head"><h2 id="h-'+pid+'">'+pt.name+'</h2><span class="muted" id="sub-'+pid+'"></span></div>';
+    html += '<div class="figs" id="figs-'+pid+'"></div><div class="warns" id="warn-'+pid+'"></div>';
+    html += '<h3 class="sub-h">Average month, Apr – Sep 2026</h3><ul class="blist" id="bd-'+pid+'"></ul>';
+    html += '<h3 class="sub-h">Month by month</h3><div class="tscroll" tabindex="0" aria-label="'+pt.name+' monthly table"><table class="pt" id="tbl-'+pid+'"></table></div>';
+    html += '<details class="box" id="inputs-'+pid+'"><summary><span class="t">Inputs for '+pt.name+'</span><span class="m"></span></summary><div class="form" id="form-'+pid+'"></div></details>';
+    html += '<details class="box"><summary><span class="t">Data notes</span><span class="m"></span></summary><div class="notes" style="padding:4px 0 18px">'+NOTES[pid].map(function(n){return '<p>'+n+'</p>';}).join("")+'</div></details>';
+    sec.innerHTML = html;
+    host.appendChild(sec);
+
+    var form = el("form-"+pid);
+    var fh = pointGroups(pid).map(function(g){
+      return '<fieldset><legend>'+g.title+'</legend>'+g.fields.map(function(f){ return fieldHtml(pre, f); }).join("")+'</fieldset>';
+    }).join("");
+    fh += '<fieldset><legend>Generator</legend>'+
+      fieldHtml(pre+"gen-", {id:"kw", label:"Rated output", unit:"kW", step:0.5, hint:"Assumption: a 6 kW petrol generator (e.g. MB7000E-A, 6 kW rated)."})+
+      fieldHtml(pre+"gen-", {id:"c100", label:"Fuel at 100% load", unit:"l/h", step:0.05, hint:"MB7000E-A spec: 2.5 l/h."})+
+      fieldHtml(pre+"gen-", {id:"c50", label:"Fuel at 50% load", unit:"l/h", step:0.05, hint:"≈60–70% of full-load use (Rental Power); spec sheets quote 1.25–1.75 l/h for 6 kW."})+
+      '</fieldset>';
+    fh += '<fieldset><legend>Equipment on the generator</legend><table class="equip"><thead><tr><th>Item</th><th>kW</th><th>Avg use %</th><th>kW × use</th></tr></thead><tbody>'+
+      EQUIP.map(function(e){ return '<tr><td>'+e.label+'</td><td><input type="number" inputmode="decimal" id="'+pre+'eq-'+e.id+'-kw" step="0.05" min="0" aria-label="'+e.label+' kW"></td><td><input type="number" inputmode="decimal" id="'+pre+'eq-'+e.id+'-duty" step="5" min="0" max="100" aria-label="'+e.label+' average use %"></td><td class="k" id="'+pre+'eq-'+e.id+'-eff"></td></tr>'; }).join("")+
+      '</tbody><tbody><tr class="tot"><td>Effective / peak load</td><td id="'+pre+'eq-peak"></td><td></td><td id="'+pre+'eq-effsum"></td></tr></tbody></table>'+
+      '<div class="btns"><button type="button" class="btn" data-copy="'+pid+'">Use this generator &amp; equipment for all points</button><button type="button" class="btn" data-reset="'+pid+'">Reset this point</button></div></fieldset>';
+    form.innerHTML = fh;
+  });
+
+  // tax form
+  el("tax-form").innerHTML = '<fieldset><legend>Group 3</legend>'+TAX_FIELDS.filter(function(f){return f.grp===3;}).map(function(f){return fieldHtml("g-", f);}).join("")+
+    fieldHtml("g-", TAX_FIELDS[6])+'</fieldset><fieldset><legend>Groups 1 and 2</legend>'+TAX_FIELDS.filter(function(f){return f.grp===1||f.grp===2;}).map(function(f){return fieldHtml("g-", f);}).join("")+'</fieldset>';
+
+  // ---- sync form from state
+  function setNum(id, v, dflt){
+    var i = el(id); if (!i) return;
+    if (document.activeElement !== i) i.value = v;
+    i.classList.toggle("changed", v !== dflt);
+  }
+  function syncForm(){
+    var g = state.g;
+    document.querySelectorAll('input[name=fopGroup]').forEach(function(r){ r.checked = +r.value === g.fopGroup; });
+    Object.keys(GLOBAL_DEFAULTS).forEach(function(k){ if (k !== "fopGroup") setNum("g-"+k, g[k], GLOBAL_DEFAULTS[k]); });
+    el("r-checkPct").value = g.checkPct;
+    TAX_FIELDS.forEach(function(f){
+      var off = f.grp && f.grp !== g.fopGroup;
+      el("f-g-"+f.id).classList.toggle("off", !!off); el("g-"+f.id).disabled = !!off;
+    });
+    POINTS.forEach(function(pt){
+      var pid = pt.id, pre = pid+"-", s = state.p[pid], d = pointDefaults(pid);
+      Object.keys(d).forEach(function(k){
+        if (k === "gen") return;
+        var i = el(pre+k); if (!i) return;
+        if (typeof d[k] === "boolean") i.checked = s[k]; else setNum(pre+k, s[k], d[k]);
+      });
+      el("f-"+pre+"shifts").classList.toggle("off", s.perDay); el(pre+"shifts").disabled = s.perDay;
+      if ("actualCogs" in s) { el("f-"+pre+"food").classList.toggle("off", s.actualCogs); el(pre+"food").disabled = s.actualCogs; }
+      ["kw","c100","c50"].forEach(function(k){ setNum(pre+"gen-"+k, s.gen[k], d.gen[k]); });
+      s.gen.equip.forEach(function(e, i){
+        setNum(pre+"eq-"+e.id+"-kw", e.kw, d.gen.equip[i].kw);
+        setNum(pre+"eq-"+e.id+"-duty", e.duty, d.gen.equip[i].duty);
+        el(pre+"eq-"+e.id+"-eff").textContent = num(e.kw*e.duty/100, 2);
+      });
+      el(pre+"eq-peak").textContent = num(s.gen.equip.reduce(function(a,e){return a+e.kw;},0), 2);
+      el(pre+"eq-effsum").textContent = num(s.gen.equip.reduce(function(a,e){return a+e.kw*e.duty/100;},0), 2);
+    });
+  }
+
+  // ---- input handling
+  function parse(v){ var x = parseFloat(String(v).replace(",", ".")); return isFinite(x) ? x : null; }
+  document.addEventListener("input", function(e){
+    var t = e.target, id = t.id || "";
+    if (t.name === "fopGroup") { state.g.fopGroup = +t.value; return update(); }
+    if (id === "r-checkPct" || id === "g-checkPct") {
+      var v = parse(t.value); if (v == null) return;
+      v = Math.min(500, Math.max(-100, Math.round(v)));
+      if (t.type === "number" && String(v) !== t.value) t.value = v;
+      state.g.checkPct = v; return update();
+    }
+    if (id.indexOf("g-") === 0) {
+      var k = id.slice(2); if (!(k in GLOBAL_DEFAULTS)) return;
+      var gv = parse(t.value); if (gv == null) return;
+      state.g[k] = Math.max(0, gv); return update();
+    }
+    var m = id.match(/^(geroev|gagarina|cherkasy)-(.+)$/); if (!m) return;
+    var s = state.p[m[1]], key = m[2], mm;
+    if (t.type === "checkbox") { if (key in s) s[key] = t.checked; return update(); }
+    var x = parse(t.value); if (x == null) return;
+    x = Math.max(0, x);
+    if ((mm = key.match(/^gen-(kw|c100|c50)$/))) s.gen[mm[1]] = x;
+    else if ((mm = key.match(/^eq-(\w+)-(kw|duty)$/))) {
+      var eq = s.gen.equip.filter(function(q){return q.id === mm[1];})[0];
+      if (eq) eq[mm[2]] = mm[2] === "duty" ? Math.min(100, x) : x;
+    }
+    else if (key in s && typeof s[key] === "number") s[key] = x;
+    else return;
+    update();
+  });
+  document.addEventListener("change", function(e){ if (e.target.type === "number" && e.target.value === "") syncForm(); });
+  document.addEventListener("click", function(e){
+    var t = e.target;
+    if (t.id === "reset-all") {
+      state = freshState(); try { localStorage.removeItem(KEY); } catch(err){}
+      document.querySelectorAll("input[type=number]").forEach(function(i){ i.value = ""; });
+      return update();
+    }
+    var c = t.getAttribute && t.getAttribute("data-copy");
+    if (c) { var src = JSON.stringify(state.p[c].gen); POINTS.forEach(function(pt){ state.p[pt.id].gen = JSON.parse(src); }); return update(); }
+    var r = t.getAttribute && t.getAttribute("data-reset");
+    if (r) { state.p[r] = pointDefaults(r); document.querySelectorAll("#form-"+r+" input[type=number]").forEach(function(i){ i.value = ""; }); return update(); }
+  });
+
+  // ---- compute everything
+  function pointParams(pid, genCost){
+    var p = Object.assign({}, MODELS[pid].DEFAULTS);
+    var s = state.p[pid];
+    Object.keys(s).forEach(function(k){ if (k !== "gen") p[k] = s[k]; });
+    TAX_KEYS.forEach(function(k){ p[k] = state.g[k]; });
+    p.fopGroup = state.g.fopGroup; p.checkPct = state.g.checkPct; p.genCost = genCost;
+    return p;
+  }
+  function inWindow(r){ return r.month >= "2026-04" && r.month <= "2026-09"; }
+  function computeAll(){
+    var out = {points:{}, months:null};
+    POINTS.forEach(function(pt){
+      var pid = pt.id, M = MODELS[pid];
+      var gen = generatorModel(state.p[pid].gen, state.g.blackoutHours, state.g.fuelPrice, state.g.genMaint);
+      var p = pointParams(pid, gen.total), p0 = pointParams(pid, 0);
+      var res = M.compute(p, PERIOD), res0 = M.compute(p0, PERIOD);
+      var rows = res.rows.filter(inWindow), rows0 = res0.rows.filter(inWindow);
+      var c = 0, c0 = 0;
+      rows.forEach(function(r, i){ c += r.cash; c0 += rows0[i].cash; r.onHand = c; r.onHand0 = c0; r.cash0 = rows0[i].cash; r.avgCheck = r.revenue / r.receipts; });
+      out.points[pid] = {res:res, res0:res0, rows:rows, gen:gen, p:p, sum:M.sumRows(rows), sum0:M.sumRows(rows0)};
+      if (!out.months) out.months = rows.map(function(r){ return r.month; });
+    });
+    var comb = out.months.map(function(m, i){
+      var o = {month:m, revenue:0, costs:0, gen:0, cash:0, cash0:0, onHand:0, onHand0:0, esv:0, fixedTax:0};
+      POINTS.forEach(function(pt){ var r = out.points[pt.id].rows[i];
+        o.revenue += r.revenue; o.gen += r.gen; o.cash += r.cash; o.cash0 += r.cash0; o.onHand += r.onHand; o.onHand0 += r.onHand0; o.esv += r.esv; o.fixedTax += r.fixedTax; });
+      o.costs = o.revenue - o.cash;
+      return o;
+    });
+    out.combined = comb;
+    return out;
+  }
+
+  // ---- render
+  var last;
+  function update(){ save(); syncForm(); render(); }
+  function render(){
+    var R = computeAll(); last = R;
+    var comb = R.combined, endC = comb[comb.length-1];
+    var g = state.g;
+
+    // scenario outputs
+    el("out-check").textContent = (g.checkPct>0?"+":g.checkPct<0?"−":"") + Math.abs(g.checkPct) + "% → avg check " + POINTS.map(function(pt){
+      var res = R.points[pt.id].res; return pt.short + " " + fmt(res.actualCheck * MODELS[pt.id].checkFactor(R.points[pt.id].p), 1);
+    }).join(" · ");
+
+    // global warnings: ФОП on the combined income + group 1 staff
+    var w = [], lim = MODELS.geroev.FOP_INCOME_LIMIT[g.fopGroup];
+    var combRev = comb.reduce(function(a, r){ return a + r.revenue; }, 0), combAnnual = combRev / comb.length * 12;
+    if (lim && combAnnual > lim) w.push('<div class="warn"><strong>Over the ФОП group '+g.fopGroup+' income limit for the owner.</strong> The three points together: '+fmt(combAnnual)+' a year (Apr – Sep revenue '+fmt(combRev)+' × 2) against the '+fmt(lim)+' limit, '+fmt(combAnnual - lim)+' over.</div>');
+    if (g.fopGroup === 1 && POINTS.some(function(pt){ var s = state.p[pt.id]; return s.shiftRate > 0 || s.baristaPct > 0; }))
+      w.push('<div class="warn"><strong>ФОП group 1 does not allow hired employees.</strong> The barista costs only fit if the owner or a family member works the shifts.</div>');
+    el("global-warns").innerHTML = w.join("");
+
+    // key figures, cash on hand
+    var figs = [fig("All three points, 30 Sep 2026", fmt(endC.onHand), negc(endC.onHand), "before generator fuel " + fmt(endC.onHand0), true)];
+    POINTS.forEach(function(pt){ var r = R.points[pt.id].rows; var e = r[r.length-1];
+      figs.push(fig(pt.name, fmt(e.onHand), negc(e.onHand), "before fuel " + fmt(e.onHand0))); });
+    el("coh-figs").innerHTML = figs.join("");
+
+    // combined table
+    var h = '<thead><tr><th>Month</th><th>Revenue</th><th>Costs</th><th>of which generator</th><th>Monthly cash</th><th class="strong">Cash on hand</th><th>Before fuel</th></tr></thead><tbody>';
+    comb.forEach(function(r){
+      h += '<tr><td>'+mlabel(r.month)+'</td><td>'+fmt(r.revenue)+'</td><td>'+fmt(r.costs)+'</td><td>'+fmt(r.gen)+'</td><td class="'+negc(r.cash)+'" data-v="'+r.cash+'">'+fmt(r.cash)+'</td><td class="strong'+negc(r.onHand)+'" data-v="'+r.onHand+'">'+fmt(r.onHand)+'</td><td class="dim" data-v="'+r.onHand0+'">'+fmt(r.onHand0)+'</td></tr>';
+    });
+    var tR = comb.reduce(function(a,r){return a+r.revenue;},0), tC = comb.reduce(function(a,r){return a+r.costs;},0), tG = comb.reduce(function(a,r){return a+r.gen;},0), tK = comb.reduce(function(a,r){return a+r.cash;},0);
+    h += '</tbody><tbody><tr class="tot"><td>Apr – Sep</td><td>'+fmt(tR)+'</td><td>'+fmt(tC)+'</td><td>'+fmt(tG)+'</td><td class="'+negc(tK)+'">'+fmt(tK)+'</td><td class="'+negc(endC.onHand)+'">'+fmt(endC.onHand)+'</td><td class="dim">'+fmt(endC.onHand0)+'</td></tr></tbody>';
+    el("tbl-combined").innerHTML = h;
+
+    // by point table
+    h = '<thead><tr><th>End of month</th>'+POINTS.map(function(pt){return '<th>'+pt.name+'</th>';}).join("")+'<th class="strong">Combined</th></tr></thead><tbody>';
+    comb.forEach(function(r, i){
+      h += '<tr><td>'+mlabel(r.month)+'</td>'+POINTS.map(function(pt){ var v = R.points[pt.id].rows[i].onHand; return '<td class="'+negc(v)+'" data-v="'+v+'">'+fmt(v)+'</td>'; }).join("")+'<td class="strong'+negc(r.onHand)+'">'+fmt(r.onHand)+'</td></tr>';
+    });
+    h += '</tbody><tbody><tr class="tot"><td>Before fuel, 30 Sep</td>'+POINTS.map(function(pt){ var rr = R.points[pt.id].rows; var v = rr[rr.length-1].onHand0; return '<td class="dim'+negc(v)+'">'+fmt(v)+'</td>'; }).join("")+'<td class="dim'+negc(endC.onHand0)+'">'+fmt(endC.onHand0)+'</td></tr></tbody>';
+    el("tbl-bypoint").innerHTML = h;
+
+    renderGenerator(R);
+    POINTS.forEach(function(pt){ renderPoint(pt, R.points[pt.id]); });
+    var dupMonthly = 2 * (g.esv + (g.fopGroup === 1 ? g.g1Tax + g.g1Levy : g.fopGroup === 2 ? g.g2Tax + g.g2Levy : 0));
+    el("dup-tax").textContent = fmt(dupMonthly * comb.length) + " (" + fmt(dupMonthly) + " a month)";
+    renderChart(R);
+  }
+  function fig(l, v, cls, n, lead){
+    return '<div class="fig'+(lead?' lead':'')+'"><div class="l">'+l+'</div><div class="v'+(cls||"")+'">'+v+'</div>'+(n?'<div class="n">'+n+'</div>':'')+'</div>';
+  }
+
+  function renderGenerator(R){
+    var g = state.g;
+    el("gen-sub").textContent = num(g.blackoutHours) + " h a month at " + fmt(g.fuelPrice, 2) + "/l";
+    var h = '<thead><tr><th>Point</th><th>Rated</th><th>Effective load</th><th>Peak load</th><th>Fuel use</th><th>kWh / mo</th><th>Litres / mo</th><th>Fuel</th><th>Oil &amp; maint.</th><th class="strong">Total / mo</th></tr></thead><tbody>';
+    var warns = [];
+    var tot = {kwh:0, litres:0, fuel:0, maint:0, total:0};
+    POINTS.forEach(function(pt){
+      var G = R.points[pt.id].gen, s = state.p[pt.id].gen;
+      tot.kwh += G.kwh; tot.litres += G.litres; tot.fuel += G.fuelCost; tot.maint += G.maintCost; tot.total += G.total;
+      h += '<tr><td>'+pt.name+'</td><td>'+num(s.kw,1)+' kW</td><td class="'+(G.overEff?'neg':'')+'">'+num(G.eff,2)+' kW · '+(isFinite(G.ratio)?Math.round(G.ratio*100)+'%':'—')+'</td><td class="'+(G.overPeak?'neg':'')+'">'+num(G.peak,2)+' kW</td><td>'+num(G.lph,2)+' l/h</td><td>'+num(G.kwh)+'</td><td data-v="'+G.litres+'">'+num(G.litres,1)+'</td><td data-v="'+G.fuelCost+'">'+fmt(G.fuelCost)+'</td><td>'+fmt(G.maintCost)+'</td><td class="strong" data-v="'+G.total+'">'+fmt(G.total)+'</td></tr>';
+      var msg = G.overEff ? 'effective load '+num(G.eff,2)+' kW exceeds the generator’s rated '+num(s.kw,1)+' kW.</strong> It cannot carry this load; fuel is capped at the 100% figure and kWh at the rated output.'
+        : G.overPeak ? 'peak load '+num(G.peak,2)+' kW (everything at full power) exceeds the rated '+num(s.kw,1)+' kW.</strong> Stagger the espresso machine’s heat-up, grinders and other items, or use a larger generator.' : null;
+      if (msg) { var hit = warns.filter(function(x){ return x.msg === msg; })[0]; if (hit) hit.who.push(pt.name); else warns.push({msg:msg, who:[pt.name]}); }
+    });
+    h += '</tbody><tbody><tr class="tot"><td>All three</td><td></td><td></td><td></td><td></td><td>'+num(tot.kwh)+'</td><td>'+num(tot.litres,1)+'</td><td>'+fmt(tot.fuel)+'</td><td>'+fmt(tot.maint)+'</td><td>'+fmt(tot.total)+'</td></tr></tbody>';
+    el("tbl-gen").innerHTML = h;
+    el("gen-warns").innerHTML = warns.map(function(x){ return '<div class="warn"><strong>'+(x.who.length === POINTS.length ? 'All three points' : x.who.join(', '))+': '+x.msg+'</div>'; }).join("");
+  }
+
+  function renderPoint(pt, P){
+    var pid = pt.id, res = P.res, rows = P.rows, sum = P.sum, n = rows.length, last = rows[rows.length-1];
+    var tochka = pid !== "cherkasy";
+    el("sub-"+pid).textContent = (tochka ? "cost of goods from the POS" : "food cost assumed " + num(state.p[pid].food,1) + "%") + " · " + sum.days + " trading days";
+    var bef = res.breakEvenFactor;
+    el("figs-"+pid).innerHTML = [
+      fig("Cash on hand, 30 Sep", fmt(last.onHand), negc(last.onHand), "before fuel " + fmt(last.onHand0), true),
+      fig("Average monthly cash", fmt(res.avgMonthlyCash), negc(res.avgMonthlyCash), "Apr – Sep 2026"),
+      fig("Margin", pct(res.margin), negc(res.margin), "cash ÷ " + fmt(sum.revenue) + " revenue"),
+      fig("Generator per month", fmt(P.gen.total), "", num(P.gen.litres,1) + " l · " + num(P.gen.kwh) + " kWh"),
+      fig("Break-even avg check", fmt(res.actualCheck*bef,1), "", isFinite(bef) ? sgnPct((bef-1)*100) + " vs actual " + fmt(res.actualCheck,1) : "not reachable")
+    ].join("");
+
+    // per-point ФОП warning, as in the originals (Apr – Sep annualised)
+    var w = [], g = state.g, lim = MODELS[pid].FOP_INCOME_LIMIT[g.fopGroup];
+    if (lim && res.annualRevenue > lim) w.push('<div class="warn"><strong>Over the ФОП group '+g.fopGroup+' income limit on this point alone.</strong> Annualised revenue '+fmt(res.annualRevenue)+' against '+fmt(lim)+': '+fmt(res.annualRevenue - lim)+' over.</div>');
+    if (g.fopGroup === 1 && (state.p[pid].shiftRate > 0 || state.p[pid].baristaPct > 0)) w.push('<div class="warn caution">Group 1: barista costs here ('+fmt(sum.barista/n)+' a month) only fit if the owner or family works the shifts.</div>');
+    el("warn-"+pid).innerHTML = w.join("");
+
+    // breakdown, average month
+    var Rv = sum.revenue/n, cash = sum.cash/n;
+    var items = [
+      [tochka ? "Cost of goods (" + (state.p[pid].actualCogs ? "POS actual" : "override") + ")" : "Food (coffee, milk, syrups, snacks)", sum.food],
+      ["Cups, lids & packaging", sum.pack],
+      ["Barista, per-shift pay", sum.bFixed],
+      ["Barista, % of sales", sum.bPct],
+      ["Rent", sum.rent],
+      ["Utilities", sum.utilities],
+      ["Taxes (single tax, levy, ЄСВ)", sum.taxes],
+      ["Card fees", sum.fees],
+      ["Other (write-offs, POS, maintenance, marketing)", sum.writeoff + sum.pos + sum.maint + sum.marketing],
+      ["Generator fuel & oil (blackouts)", sum.gen, "gen"]
+    ];
+    var li = '<li style="font-weight:600"><span>Revenue</span><span class="v">'+fmt(Rv)+'</span><span class="p">100%</span></li>';
+    li += items.map(function(i){ return '<li class="'+(i[2]||"")+'"><span>'+i[0]+'</span><span class="v">'+fmt(i[1]/n)+'</span><span class="p">'+pct(Rv>0?i[1]/n/Rv:NaN)+'</span></li>'; }).join("");
+    li += '<li class="cash"><span>Cash left</span><span class="v'+negc(cash)+'">'+fmt(cash)+'</span><span class="p'+negc(cash)+'">'+pct(Rv>0?cash/Rv:NaN)+'</span></li>';
+    el("bd-"+pid).innerHTML = li;
+
+    // month table
+    var h = '<thead><tr><th>Month</th><th>Revenue</th><th>COGS %</th><th>Avg check</th><th>Barista</th><th>COGS + pack.</th><th>Other var.</th><th>Taxes</th><th>Fixed</th><th>Generator</th><th>Monthly cash</th><th class="strong">Cash on hand</th></tr></thead><tbody>';
+    function row(label, r, onHand, cls){
+      var gross = r.revenue - r.food;
+      return '<tr class="'+(cls||"")+'"><td>'+label+'</td><td title="'+r.days+' trading days, gross profit '+fmt(gross)+'">'+fmt(r.revenue)+'</td><td>'+pct(r.revenue>0?r.food/r.revenue:NaN)+'</td><td title="'+num(r.receipts)+' receipts">'+fmt(r.revenue/r.receipts,1)+'</td><td>'+fmt(r.barista)+'</td><td>'+fmt(r.food+r.pack)+'</td><td>'+fmt(r.otherVar)+'</td><td>'+fmt(r.taxes)+'</td><td>'+fmt(r.fixedOps)+'</td><td>'+fmt(r.gen)+'</td><td class="'+negc(r.cash)+'" data-v="'+r.cash+'">'+fmt(r.cash)+'</td><td class="strong'+negc(onHand)+'" data-v="'+onHand+'">'+fmt(onHand)+'</td></tr>';
+    }
+    rows.forEach(function(r){ h += row(mlabel(r.month), r, r.onHand); });
+    h += '</tbody><tbody>' + row("Apr – Sep", sum, last.onHand, "tot") + '</tbody>';
+    el("tbl-"+pid).innerHTML = h;
+  }
+
+  // ---- chart: cumulative cash on hand
+  var wrap = el("chart-wrap"), svg = el("chart");
+  function niceStep(raw){
+    if (!(raw > 0) || !isFinite(raw)) return 10000;
+    var p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw/p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
+  }
+  function kfmt(v){ var a = Math.abs(v); if (Math.round(a/1000) === 0) return "₴0"; return (v < 0 && Math.round(a/1000) !== 0 ? "−" : "") + "₴" + (a >= 1e6 ? (a/1e6).toFixed(1).replace(".",",") + "m" : Math.round(a/1000) + "k"); }
+  function renderChart(R){
+    var W = Math.max(300, wrap.clientWidth || 700), narrow = W < 560;
+    var H = narrow ? 250 : 320, padL = 48, padR = narrow ? 92 : 170, padT = 12, padB = 28;
+    var series = POINTS.map(function(pt){ return {name: narrow ? pt.tiny : pt.name, vals:[0].concat(R.points[pt.id].rows.map(function(r){return r.onHand;})), strong:false}; });
+    series.push({name: narrow ? "All three" : "All three points", vals:[0].concat(R.combined.map(function(r){return r.onHand;})), strong:true});
+    var all = [].concat.apply([0], series.map(function(s){return s.vals;}));
+    var maxV = Math.max.apply(null, all), minV = Math.min.apply(null, all);
+    var step = niceStep((maxV - minV)/5 || 10000);
+    var top = Math.ceil(maxV/step)*step, bot = Math.floor(minV/step)*step;
+    if (top === bot) top = bot + step;
+    var iw = W - padL - padR, ih = H - padT - padB, N = 6;
+    function x(i){ return padL + i * iw / N; }
+    function y(v){ return padT + (top - v)/(top - bot) * ih; }
+    var s = "";
+    for (var t = bot; t <= top + 1e-6; t += step){
+      var yy = y(t), zero = Math.abs(t) < 1e-6;
+      s += '<line x1="'+padL+'" x2="'+(padL+iw)+'" y1="'+yy+'" y2="'+yy+'" stroke="'+(zero?'#111':'#e6e6e6')+'" stroke-width="1"/>';
+      s += '<text x="'+(padL-8)+'" y="'+(yy+4)+'" text-anchor="end">'+kfmt(t)+'</text>';
+    }
+    var xl = ["1 Apr"].concat(R.months.map(mshort));
+    xl.forEach(function(l, i){ s += '<text x="'+x(i)+'" y="'+(H-8)+'" text-anchor="middle">'+l+'</text>'; });
+    series.forEach(function(se){
+      var pts = se.vals.map(function(v, i){ return x(i).toFixed(1)+","+y(v).toFixed(1); }).join(" ");
+      s += '<polyline points="'+pts+'" fill="none" stroke="'+(se.strong?'#111':'#9a9a9a')+'" stroke-width="'+(se.strong?2.25:1.25)+'" stroke-linejoin="round" stroke-linecap="round"/>';
+      if (se.strong) se.vals.forEach(function(v, i){ s += '<circle cx="'+x(i)+'" cy="'+y(v)+'" r="2.75" fill="#111"/>'; });
+    });
+    // end labels, nudged apart
+    var labs = series.map(function(se){ var v = se.vals[N]; return {y:y(v), v:v, se:se}; }).sort(function(a,b){return a.y-b.y;});
+    for (var i = 1; i < labs.length; i++) if (labs[i].y - labs[i-1].y < 15) labs[i].y = labs[i-1].y + 15;
+    labs.forEach(function(L){
+      s += '<text x="'+(padL+iw+8)+'" y="'+(L.y+4)+'" style="fill:'+(L.se.strong?'#111':'#555')+';font-weight:'+(L.se.strong?600:400)+'">'+L.se.name+' '+kfmt(L.v)+'</text>';
+    });
+    svg.setAttribute("viewBox", "0 0 "+W+" "+H);
+    svg.setAttribute("width", W); svg.setAttribute("height", H);
+    svg.setAttribute("aria-label", "Cumulative cash on hand, 1 Apr to 30 Sep 2026. " + series.map(function(se){ return se.name + " " + fmt(se.vals[N]); }).join(", "));
+    svg.innerHTML = s;
+  }
+  var rt;
+  window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(function(){ if (last) renderChart(last); }, 120); });
+
+  window.CoffeeCash = {state:function(){ return JSON.parse(JSON.stringify(state)); }, results:function(){ return last; }};
+  syncForm();
+  render();
+})();
+</script>
+</body>
+</html>
